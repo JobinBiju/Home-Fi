@@ -78,6 +78,37 @@ class DashboardView extends GetView<HomeController> {
             },
           ),
           SizedBox(height: size.height * 0.03),
+          Container(
+            height: Get.height * 0.09,
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Theme.of(context).scaffoldBackgroundColor,
+              border: Border.all(
+                color: Theme.of(context).primaryColor,
+                width: 1,
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Room\nTemperature',
+                  style: kSub2HeadTextStyle.copyWith(
+                    color: Theme.of(context).primaryColorDark,
+                  ),
+                ),
+                Text(
+                  '29°c',
+                  style: kSub2HeadTextStyle.copyWith(
+                    color: Theme.of(context).primaryColorDark,
+                    fontSize: 28,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: size.height * 0.03),
           Text(
             'Smart Systems',
             style: kSub2HeadTextStyle.copyWith(

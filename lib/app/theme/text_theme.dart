@@ -16,7 +16,7 @@ var kSubHeadTextStyle = GoogleFonts.dmSans(
   ),
 );
 
-var kSub2HeadTextStyle = GoogleFonts.openSans(
+var kSub2HeadTextStyle = GoogleFonts.dmSans(
   textStyle: TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w600,
@@ -30,8 +30,8 @@ const kDefaultShadow = BoxShadow(
   color: Colors.black26,
 );
 
-const kLightShadow = BoxShadow(
-  offset: Offset(0, 15),
-  blurRadius: 27,
-  color: Colors.black12,
+var kLightShadow = BoxShadow(
+  offset: Offset(0, 3),
+  blurRadius: 15,
+  color: Colors.grey.shade200,
 );
