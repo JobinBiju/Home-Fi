@@ -12,7 +12,7 @@ final appThemeData = {
     primaryColor: primaryMaroon,
     accentColor: primaryMaroon,
     scaffoldBackgroundColor: white1,
-    primaryColorLight: white2,
+    primaryColorLight: secondaryMaroon,
     primaryColorDark: secondaryGrey,
     colorScheme: ColorScheme.light(
       primary: primaryMaroon,
