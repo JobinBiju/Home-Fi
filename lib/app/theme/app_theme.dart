@@ -9,23 +9,23 @@ enum AppTheme {
 final appThemeData = {
   AppTheme.MaroonLight: ThemeData(
     brightness: Brightness.light,
-    primaryColor: primaryMaroon,
-    accentColor: primaryMaroon,
-    scaffoldBackgroundColor: white1,
-    primaryColorLight: secondaryMaroon,
-    primaryColorDark: secondaryGrey,
+    primaryColor: GFTheme.primaryMaroon,
+    accentColor: GFTheme.primaryMaroon,
+    scaffoldBackgroundColor: GFTheme.white1,
+    primaryColorLight: GFTheme.secondaryMaroon,
+    primaryColorDark: GFTheme.secondaryGrey,
     colorScheme: ColorScheme.light(
-      primary: primaryMaroon,
+      primary: GFTheme.primaryMaroon,
     ),
   ),
   AppTheme.MaroonDark: ThemeData(
     brightness: Brightness.dark,
-    primaryColor: secondaryMaroon,
-    scaffoldBackgroundColor: primaryGrey,
-    primaryColorDark: white2,
-    primaryColorLight: secondaryGrey,
+    primaryColor: GFTheme.secondaryMaroon,
+    scaffoldBackgroundColor: GFTheme.primaryGrey,
+    primaryColorDark: GFTheme.white2,
+    primaryColorLight: GFTheme.secondaryGrey,
     colorScheme: ColorScheme.dark(
-      primary: secondaryMaroon,
+      primary: GFTheme.secondaryMaroon,
     ),
   ),
 };

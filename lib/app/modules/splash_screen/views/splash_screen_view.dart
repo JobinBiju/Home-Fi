@@ -35,7 +35,7 @@ class SplashScreenView extends GetView<SplashScreenController> {
               Text(
                 'Let There Be Light',
                 style: kHeadTextStyle.copyWith(
-                  color: primaryGrey,
+                  color: GFTheme.primaryGrey,
                 ),
               ),
             ],

@@ -48,7 +48,7 @@ class RoomSelector extends StatelessWidget {
           Text(
             roomName,
             style: kSub2HeadTextStyle.copyWith(
-                color: Theme.of(context).primaryColor, fontSize: 10),
+                color: Theme.of(context).primaryColorDark, fontSize: 10),
           ),
         ],
       ),

@@ -32,7 +32,7 @@ class DashboardView extends GetView<HomeController> {
                   Text(
                     'Welcome\nHome, ${controller.userName}',
                     style: kSubHeadTextStyle.copyWith(
-                        color: Theme.of(context).primaryColor),
+                        color: Theme.of(context).primaryColorDark),
                   ),
                   GestureDetector(
                     // onTap: () => Get.to(() => ProfileView()),
@@ -49,7 +49,7 @@ class DashboardView extends GetView<HomeController> {
           Text(
             'Rooms',
             style: kSub2HeadTextStyle.copyWith(
-                color: Theme.of(context).primaryColor),
+                color: Theme.of(context).primaryColorDark),
           ),
           SizedBox(height: size.height * 0.02),
           GetBuilder<HomeController>(
@@ -81,7 +81,7 @@ class DashboardView extends GetView<HomeController> {
           Text(
             'Smart Systems',
             style: kSub2HeadTextStyle.copyWith(
-                color: Theme.of(context).primaryColor),
+                color: Theme.of(context).primaryColorDark),
           ),
         ],
       ),

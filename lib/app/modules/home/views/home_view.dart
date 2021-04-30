@@ -35,7 +35,9 @@ class HomeView extends GetView<HomeController> {
                       size: controller.currentIndex == 0 ? 26 : 22,
                       color: controller.currentIndex == 0
                           ? Theme.of(context).scaffoldBackgroundColor
-                          : Theme.of(context).primaryColorLight,
+                          : Theme.of(context)
+                              .scaffoldBackgroundColor
+                              .withOpacity(0.5),
                     ),
                     onPressed: () {
                       controller.currentIndex = 0;
@@ -47,7 +49,9 @@ class HomeView extends GetView<HomeController> {
                       size: controller.currentIndex == 1 ? 26 : 22,
                       color: controller.currentIndex == 1
                           ? Theme.of(context).scaffoldBackgroundColor
-                          : Theme.of(context).primaryColorLight,
+                          : Theme.of(context)
+                              .scaffoldBackgroundColor
+                              .withOpacity(0.5),
                     ),
                     onPressed: () {
                       controller.currentIndex = 1;
@@ -59,7 +63,9 @@ class HomeView extends GetView<HomeController> {
                       size: controller.currentIndex == 2 ? 26 : 22,
                       color: controller.currentIndex == 2
                           ? Theme.of(context).scaffoldBackgroundColor
-                          : Theme.of(context).primaryColorLight,
+                          : Theme.of(context)
+                              .scaffoldBackgroundColor
+                              .withOpacity(0.5),
                     ),
                     onPressed: () {
                       controller.currentIndex = 2;
