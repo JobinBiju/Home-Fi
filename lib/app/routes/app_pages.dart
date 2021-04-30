@@ -8,7 +8,7 @@ import 'package:home_automation/app/modules/splash_screen/views/splash_screen_vi
 part 'app_routes.dart';
 
 class AppPages {
-  static const INITIAL = Routes.SPLASH_SCREEN;
+  static const INITIAL = Routes.HOME;
 
   static final routes = [
     GetPage(

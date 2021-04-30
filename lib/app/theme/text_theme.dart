@@ -8,7 +8,7 @@ var kHeadTextStyle = GoogleFonts.lato(
     height: 1.2,
   ),
 );
-var kSubHeadTextStyle = GoogleFonts.openSans(
+var kSubHeadTextStyle = GoogleFonts.dmSans(
   textStyle: TextStyle(
     fontSize: 26,
     fontWeight: FontWeight.w600,

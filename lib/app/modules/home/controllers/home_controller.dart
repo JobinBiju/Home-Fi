@@ -10,6 +10,10 @@ class HomeController extends GetxController {
   get currentIndex => this._currentIndex.value;
   set currentIndex(index) => this._currentIndex.value = index;
 
+  // userData
+  String userName = 'Jobin';
+  bool isMale = true;
+
   // the list of screens switched by bottom navBar
   final List<Widget> homeViews = [
     DashboardView(),
