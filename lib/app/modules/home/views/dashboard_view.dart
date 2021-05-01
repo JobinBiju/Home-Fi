@@ -127,23 +127,45 @@ class DashboardView extends GetView<HomeController> {
                           color: Theme.of(context).primaryColorDark),
                     ),
                     SizedBox(height: size.height * 0.03),
-                    Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    GetBuilder<HomeController>(
+                      id: 2,
+                      builder: (_) {
+                        return Column(
                           children: [
-                            SmartSystem(size: size),
-                            SmartSystem(size: size),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SmartSystem(
+                                  size: size,
+                                  color: GFTheme.lightPurple,
+                                  index: 0,
+                                ),
+                                SmartSystem(
+                                  size: size,
+                                  color: GFTheme.lightBlue,
+                                  index: 1,
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: size.height * 0.01),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SmartSystem(
+                                  size: size,
+                                  color: GFTheme.lightYellow,
+                                  index: 2,
+                                ),
+                                SmartSystem(
+                                  size: size,
+                                  color: GFTheme.lightPeach,
+                                  index: 3,
+                                ),
+                              ],
+                            ),
                           ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SmartSystem(size: size),
-                            SmartSystem(size: size),
-                          ],
-                        ),
-                      ],
+                        );
+                      },
                     ),
                     SizedBox(height: size.height * 0.14),
                   ],

@@ -34,6 +34,8 @@ class HomeController extends GetxController {
     Room(roomName: 'Bathroom', roomImgUrl: 'assets/icons/bathtub.svg'),
   ];
 
+  List<bool> isToggled = [false, false, false, false];
+
   // function to return correct view on bottom navBar switch
   Widget navBarSwitcher() {
     return homeViews.elementAt(currentIndex);
@@ -43,6 +45,11 @@ class HomeController extends GetxController {
     selectedRoom = [false, false, false, false, false];
     selectedRoom[index] = true;
     update([1, true]);
+  }
+
+  onSwitched(int index) {
+    isToggled[index] = !isToggled[index];
+    update([2, true]);
   }
 
   @override

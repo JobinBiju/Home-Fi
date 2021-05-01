@@ -1,13 +1,21 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:home_automation/app/theme/color_theme.dart';
+import 'package:get/get.dart';
+import 'package:home_automation/app/global_widgets/animated_switch.dart';
+import 'package:home_automation/app/modules/home/controllers/home_controller.dart';
 
 class SmartSystem extends StatelessWidget {
-  const SmartSystem({
+  final controller = Get.put(HomeController());
+  final Size size;
+  final Color color;
+  final int index;
+
+  SmartSystem({
     Key key,
     @required this.size,
+    this.color,
+    this.index,
   }) : super(key: key);
-
-  final Size size;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +32,7 @@ class SmartSystem extends StatelessWidget {
               width: size.width * 0.34,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: GFTheme.lightPurple.withOpacity(0.5)),
+                  color: color.withOpacity(0.45)),
             ),
           ),
           Align(
@@ -34,7 +42,32 @@ class SmartSystem extends StatelessWidget {
               width: size.width * 0.4,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: GFTheme.lightPurple,
+                color: color,
+              ),
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Positioned(
+                    top: 0,
+                    left: -10,
+                    child: Image(
+                      image: AssetImage('assets/images/icons8-light-96.png'),
+                      fit: BoxFit.fill,
+                      width: 80,
+                    ),
+                  ),
+                  Positioned(
+                    top: 20,
+                    right: 15,
+                    child: AnimatedSwitch(
+                      isToggled: controller.isToggled,
+                      index: index,
+                      onTap: () {
+                        controller.onSwitched(index);
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
           )
