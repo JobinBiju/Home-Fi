@@ -3,18 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:home_automation/app/global_widgets/animated_switch.dart';
 import 'package:home_automation/app/modules/home/controllers/home_controller.dart';
+import 'package:home_automation/app/theme/text_theme.dart';
 
 class SmartSystem extends StatelessWidget {
   final controller = Get.put(HomeController());
   final Size size;
   final Color color;
   final int index;
+  final String title;
+  final String imageUrl;
 
   SmartSystem({
     Key key,
     @required this.size,
     this.color,
     this.index,
+    this.title,
+    this.imageUrl,
   }) : super(key: key);
 
   @override
@@ -48,10 +53,10 @@ class SmartSystem extends StatelessWidget {
                 clipBehavior: Clip.none,
                 children: [
                   Positioned(
-                    top: 0,
-                    left: -10,
+                    top: 8,
+                    left: 5,
                     child: Image(
-                      image: AssetImage('assets/images/icons8-light-96.png'),
+                      image: AssetImage(imageUrl),
                       fit: BoxFit.fill,
                       width: 80,
                     ),
@@ -67,6 +72,15 @@ class SmartSystem extends StatelessWidget {
                       },
                     ),
                   ),
+                  Positioned(
+                      bottom: 30,
+                      left: 15,
+                      child: Text(
+                        title,
+                        style: kSub2HeadTextStyle.copyWith(
+                          color: Theme.of(context).primaryColorDark,
+                        ),
+                      )),
                 ],
               ),
             ),

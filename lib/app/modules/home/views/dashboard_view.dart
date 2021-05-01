@@ -139,11 +139,16 @@ class DashboardView extends GetView<HomeController> {
                                   size: size,
                                   color: GFTheme.lightPurple,
                                   index: 0,
+                                  title: 'LED Light',
+                                  imageUrl: 'assets/images/icons8-light-96.png',
                                 ),
                                 SmartSystem(
                                   size: size,
                                   color: GFTheme.lightBlue,
                                   index: 1,
+                                  title: 'RGB LED',
+                                  imageUrl:
+                                      'assets/images/icons8-rgb-lamp-96.png',
                                 ),
                               ],
                             ),
@@ -155,11 +160,16 @@ class DashboardView extends GetView<HomeController> {
                                   size: size,
                                   color: GFTheme.lightYellow,
                                   index: 2,
+                                  title: 'Music Player',
+                                  imageUrl:
+                                      'assets/images/icons8-music-record-96.png',
                                 ),
                                 SmartSystem(
                                   size: size,
                                   color: GFTheme.lightPeach,
                                   index: 3,
+                                  title: 'LED Light 2',
+                                  imageUrl: 'assets/images/icons8-light-96.png',
                                 ),
                               ],
                             ),
