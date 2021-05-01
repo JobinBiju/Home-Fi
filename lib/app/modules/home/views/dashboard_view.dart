@@ -79,8 +79,8 @@ class DashboardView extends GetView<HomeController> {
           ),
           SizedBox(height: size.height * 0.03),
           Container(
-            height: Get.height * 0.09,
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            height: Get.height * 0.082,
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: Theme.of(context).scaffoldBackgroundColor,
