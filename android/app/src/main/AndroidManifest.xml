@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.geekflow.home_automation">
+    package="com.geekflow.home_fi">
    <application
-        android:label="home_automation"
+        android:label="Home-Fi"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

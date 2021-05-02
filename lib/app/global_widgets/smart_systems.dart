@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:home_automation/app/global_widgets/animated_switch.dart';
-import 'package:home_automation/app/modules/home/controllers/home_controller.dart';
-import 'package:home_automation/app/theme/text_theme.dart';
+import 'package:home_fi/app/global_widgets/animated_switch.dart';
+import 'package:home_fi/app/modules/home/controllers/home_controller.dart';
+import 'package:home_fi/app/theme/text_theme.dart';
 
 class SmartSystem extends StatelessWidget {
   final controller = Get.put(HomeController());

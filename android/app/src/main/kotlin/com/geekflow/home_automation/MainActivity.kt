@@ -1,4 +1,4 @@
-package com.geekflow.home_automation
+package com.geekflow.home_fi
 
 import io.flutter.embedding.android.FlutterActivity
 

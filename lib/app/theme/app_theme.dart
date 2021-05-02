@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:home_automation/app/theme/color_theme.dart';
+import 'package:home_fi/app/theme/color_theme.dart';
 
 enum AppTheme {
   MaroonLight,

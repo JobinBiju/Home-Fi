@@ -1,4 +1,4 @@
-# home_automation
+# Home-Fi
 
 A new Flutter application.
 
