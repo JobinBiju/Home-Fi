@@ -12,12 +12,15 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  flutter_svg: ^0.19.3
+  flutter_blue: ^0.8.0
+  flutter_circle_color_picker: ^0.3.0
+  flutter_svg: ^0.22.0
   font_awesome_flutter: ^9.0.0
   get: 4.1.4
   get_storage: ^2.0.2
   google_fonts: ^1.1.1
   lottie: ^1.0.1
+  sleek_circular_slider: ^2.0.0
 
 dev_dependencies:
   flutter_test:

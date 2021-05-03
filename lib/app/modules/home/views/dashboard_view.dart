@@ -5,6 +5,7 @@ import 'package:home_fi/app/global_widgets/room_selector.dart';
 import 'package:home_fi/app/global_widgets/smart_systems.dart';
 import 'package:home_fi/app/global_widgets/user_avathar.dart';
 import 'package:home_fi/app/modules/home/controllers/home_controller.dart';
+import 'package:home_fi/app/modules/room_temp/views/room_temp_view.dart';
 import 'package:home_fi/app/theme/color_theme.dart';
 import 'package:home_fi/app/theme/text_theme.dart';
 
@@ -89,35 +90,40 @@ class DashboardView extends GetView<HomeController> {
                       },
                     ),
                     SizedBox(height: size.height * 0.03),
-                    Container(
-                      height: Get.height * 0.082,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Theme.of(context).scaffoldBackgroundColor,
-                        border: Border.all(
-                          color: Theme.of(context).primaryColor,
-                          width: 1,
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => RoomTempView());
+                      },
+                      child: Container(
+                        height: Get.height * 0.082,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                          border: Border.all(
+                            color: Theme.of(context).primaryColor,
+                            width: 1,
+                          ),
                         ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Room\nTemperature',
-                            style: kSub2HeadTextStyle.copyWith(
-                              color: Theme.of(context).primaryColorDark,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Room\nTemperature',
+                              style: kSub2HeadTextStyle.copyWith(
+                                color: Theme.of(context).primaryColorDark,
+                              ),
                             ),
-                          ),
-                          Text(
-                            '29°c',
-                            style: kSub2HeadTextStyle.copyWith(
-                              color: Theme.of(context).primaryColorDark,
-                              fontSize: 28,
+                            Text(
+                              '29°c',
+                              style: kSub2HeadTextStyle.copyWith(
+                                color: Theme.of(context).primaryColorDark,
+                                fontSize: 28,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(height: size.height * 0.03),
