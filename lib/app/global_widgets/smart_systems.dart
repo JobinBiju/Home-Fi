@@ -5,6 +5,8 @@ import 'package:home_fi/app/global_widgets/animated_switch.dart';
 import 'package:home_fi/app/modules/home/controllers/home_controller.dart';
 import 'package:home_fi/app/theme/text_theme.dart';
 
+import '../theme/color_theme.dart';
+
 class SmartSystem extends StatelessWidget {
   final controller = Get.put(HomeController());
   final Size size;
@@ -78,7 +80,7 @@ class SmartSystem extends StatelessWidget {
                       child: Text(
                         title,
                         style: kSub2HeadTextStyle.copyWith(
-                          color: Theme.of(context).primaryColorDark,
+                          color: GFTheme.primaryMaroon,
                         ),
                       )),
                 ],

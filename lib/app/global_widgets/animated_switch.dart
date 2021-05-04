@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../theme/color_theme.dart';
+
 class AnimatedSwitch extends StatelessWidget {
   final List<bool> isToggled;
   final int index;
@@ -67,7 +69,7 @@ class AnimatedSwitch extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: isToggled[index]
-                      ? Theme.of(context).scaffoldBackgroundColor
+                      ? GFTheme.white1
                       : Theme.of(context).primaryColor,
                 ),
               ),

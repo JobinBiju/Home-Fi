@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class RoomTempController extends GetxController {
+class DeviceSelectionController extends GetxController {
   @override
   void onInit() {
     super.onInit();
