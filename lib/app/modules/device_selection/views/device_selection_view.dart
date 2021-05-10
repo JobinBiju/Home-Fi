@@ -11,20 +11,21 @@ class DeviceSelectionView extends GetView<DeviceSelectionController> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<BluetoothState>(
-          stream: FlutterBlue.instance.state,
-          initialData: BluetoothState.unknown,
-          builder: (c, snapshot) {
-            final state = snapshot.data;
-            if (state == BluetoothState.on) {
-              return FindDevicesScreen();
-            }
-            return BluetoothOffScreen(state: state);
-          });
+      stream: FlutterBlue.instance.state,
+      initialData: BluetoothState.unknown,
+      builder: (c, snapshot) {
+        final state = snapshot.data;
+        if (state == BluetoothState.on) {
+          return FindDevicesScreen();
+        }
+        return BluetoothOffScreen(state: state);
+      },
+    );
   }
 }
 
 class BluetoothOffScreen extends GetView<DeviceSelectionController> {
-   const BluetoothOffScreen({Key key, this.state}) : super(key: key);
+  const BluetoothOffScreen({Key key, this.state}) : super(key: key);
 
   final BluetoothState state;
 

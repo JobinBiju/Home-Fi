@@ -188,6 +188,7 @@ class _RoomTempViewState extends State<RoomTempView> {
     );
   }
 }
+
 class HomeUI extends StatefulWidget {
   final double temperature;
   final double humidity;
@@ -226,21 +227,28 @@ class _HomeUIState extends State<HomeUI> {
                     SleekCircularSlider(
                       appearance: CircularSliderAppearance(
                           customWidths: CustomSliderWidths(
-                              trackWidth: 4,
-                              progressBarWidth: 20,
-                              shadowWidth: 40),
+                            trackWidth: 5,
+                            progressBarWidth: 20,
+                            shadowWidth: 10,
+                          ),
                           customColors: CustomSliderColors(
-                              trackColor: HexColor('#ef6c00'),
-                              progressBarColor: HexColor('#ffb74d'),
-                              shadowColor: HexColor('#ffb74d'),
-                              shadowMaxOpacity: 0.5, //);
-                              shadowStep: 20),
+                            trackColor: HexColor('#fdca40'),
+                            //progressBarColor: HexColor('#ffb74d'),
+                            gradientStartAngle: 90,
+                            gradientEndAngle: 360,
+                            progressBarColors: [
+                              HexColor('#81b214'),
+                              HexColor('#fdca40'),
+                              HexColor('#f58634'),
+                              HexColor('#fb3640'),
+                            ],
+                          ),
                           infoProperties: InfoProperties(
                               bottomLabelStyle: TextStyle(
                                   color: HexColor('#6DA100'),
                                   fontSize: 20,
                                   fontWeight: FontWeight.w600),
-                              bottomLabelText: 'Temp.',
+                              bottomLabelText: 'Temp',
                               mainLabelStyle: TextStyle(
                                   color: HexColor('#54826D'),
                                   fontSize: 30.0,
@@ -253,7 +261,7 @@ class _HomeUIState extends State<HomeUI> {
                           size: 200.0,
                           animationEnabled: true),
                       min: 0,
-                      max: 100,
+                      max: 80,
                       initialValue: widget.temperature,
                     ),
                     SizedBox(
@@ -261,33 +269,37 @@ class _HomeUIState extends State<HomeUI> {
                     ),
                     SleekCircularSlider(
                       appearance: CircularSliderAppearance(
-                          customWidths: CustomSliderWidths(
-                              trackWidth: 4,
-                              progressBarWidth: 20,
-                              shadowWidth: 40),
-                          customColors: CustomSliderColors(
-                              trackColor: HexColor('#0277bd'),
-                              progressBarColor: HexColor('#4FC3F7'),
-                              shadowColor: HexColor('#B2EBF2'),
-                              shadowMaxOpacity: 0.5, //);
-                              shadowStep: 20),
-                          infoProperties: InfoProperties(
-                              bottomLabelStyle: TextStyle(
-                                  color: HexColor('#6DA100'),
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w600),
-                              bottomLabelText: 'Humidity.',
-                              mainLabelStyle: TextStyle(
-                                  color: HexColor('#54826D'),
-                                  fontSize: 30.0,
-                                  fontWeight: FontWeight.w600),
-                              modifier: (double value) {
-                                return '${widget.humidity} %';
-                              }),
-                          startAngle: 90,
-                          angleRange: 360,
-                          size: 200.0,
-                          animationEnabled: true),
+                        customWidths: CustomSliderWidths(
+                          trackWidth: 4,
+                          progressBarWidth: 20,
+                          shadowWidth: 40,
+                        ),
+                        customColors: CustomSliderColors(
+                          trackColor: HexColor('#0277bd'),
+                          progressBarColor: HexColor('#4FC3F7'),
+                          shadowColor: HexColor('#B2EBF2'),
+                          shadowMaxOpacity: 0.3, //);
+                          shadowStep: 20,
+                        ),
+                        infoProperties: InfoProperties(
+                          bottomLabelStyle: TextStyle(
+                              color: HexColor('#6DA100'),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600),
+                          bottomLabelText: 'Humidity',
+                          mainLabelStyle: TextStyle(
+                              color: HexColor('#54826D'),
+                              fontSize: 30.0,
+                              fontWeight: FontWeight.w600),
+                          modifier: (double value) {
+                            return '${widget.humidity} %';
+                          },
+                        ),
+                        startAngle: 90,
+                        angleRange: 360,
+                        size: 200.0,
+                        animationEnabled: true,
+                      ),
                       min: 0,
                       max: 100,
                       initialValue: widget.humidity,
