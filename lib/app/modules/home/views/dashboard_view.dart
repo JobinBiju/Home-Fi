@@ -79,6 +79,7 @@ class DashboardView extends GetView<HomeController> {
                                   roomImageURL:
                                       controller.rooms[index].roomImgUrl,
                                   isSelected: controller.selectedRoom[index],
+                                  onTap: () {},
                                 ),
                                 onTap: () {
                                   controller.roomChange(index);

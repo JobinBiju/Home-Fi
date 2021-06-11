@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class UserAvatar extends StatelessWidget {
   final bool ismale;
   const UserAvatar({
-    Key key,
-    this.ismale,
-    @required this.radius,
+    Key? key,
+    required this.ismale,
+    required this.radius,
   }) : super(key: key);
 
   final double radius;

@@ -8,12 +8,13 @@ class RoomSelector extends StatelessWidget {
   final String roomImageURL;
   final bool isSelected;
   final Function onTap;
+
   const RoomSelector({
-    Key key,
-    this.roomName,
-    this.roomImageURL,
-    this.isSelected,
-    this.onTap,
+    Key? key,
+    required this.roomName,
+    required this.roomImageURL,
+    required this.isSelected,
+    required this.onTap,
   }) : super(key: key);
 
   @override

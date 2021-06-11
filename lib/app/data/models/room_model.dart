@@ -2,5 +2,5 @@ class Room {
   String roomName;
   String roomImgUrl;
 
-  Room({this.roomName, this.roomImgUrl});
+  Room({required this.roomName, required this.roomImgUrl});
 }

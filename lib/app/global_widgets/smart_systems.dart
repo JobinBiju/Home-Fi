@@ -16,12 +16,12 @@ class SmartSystem extends StatelessWidget {
   final String imageUrl;
 
   SmartSystem({
-    Key key,
-    @required this.size,
-    this.color,
-    this.index,
-    this.title,
-    this.imageUrl,
+    Key? key,
+    required this.size,
+    required this.color,
+    required this.index,
+    required this.title,
+    required this.imageUrl,
   }) : super(key: key);
 
   @override

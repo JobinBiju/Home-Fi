@@ -6,13 +6,13 @@ import 'package:get/get.dart';
 class SplashScreenController extends GetxController
     with SingleGetTickerProviderMixin {
 // animation controller for lottie
-  AnimationController animationController;
+  late AnimationController animationController;
 
   @override
   void onInit() {
     super.onInit();
     // spalsh animation config
-    animationController = AnimationController(
+    AnimationController animationController = AnimationController(
       duration: Duration(seconds: 4),
       vsync: this,
     );
