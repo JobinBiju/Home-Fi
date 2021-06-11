@@ -12,7 +12,7 @@ import 'package:home_fi/app/modules/splash_screen/views/splash_screen_view.dart'
 part 'app_routes.dart';
 
 class AppPages {
-  static const INITIAL = Routes.DEVICE_SELECTION;
+  static const INITIAL = Routes.HOME;
 
   static final routes = [
     GetPage(
