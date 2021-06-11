@@ -75,14 +75,15 @@ class SmartSystem extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                      bottom: 30,
-                      left: 15,
-                      child: Text(
-                        title,
-                        style: kSub2HeadTextStyle.copyWith(
-                          color: GFTheme.primaryMaroon,
-                        ),
-                      )),
+                    bottom: 30,
+                    left: 15,
+                    child: Text(
+                      title,
+                      style: kSub2HeadTextStyle.copyWith(
+                        color: GFTheme.primaryMaroon,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
