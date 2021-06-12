@@ -7,8 +7,6 @@ class DeviceSelectionView extends GetView<DeviceSelectionController> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: null,
-    );
+    return Container();
   }
 }
