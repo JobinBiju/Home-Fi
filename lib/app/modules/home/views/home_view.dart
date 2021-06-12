@@ -16,7 +16,7 @@ class HomeView extends GetView<HomeController> {
           alignment: Alignment.bottomCenter,
           child: Container(
             padding: EdgeInsets.all(25),
-            height: Get.height * 0.16,
+            height: Get.height * 0.15,
             width: Get.width,
             decoration: BoxDecoration(
               color: Colors.transparent,

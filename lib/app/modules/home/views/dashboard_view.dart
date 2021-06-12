@@ -40,7 +40,7 @@ class DashboardView extends GetView<HomeController> {
                     // onTap: () => Get.to(() => ProfileView()),
                     child: UserAvatar(
                       ismale: controller.isMale,
-                      radius: size.width * 0.065,
+                      radius: size.width * 0.075,
                     ),
                   ),
                 ],
@@ -71,7 +71,7 @@ class DashboardView extends GetView<HomeController> {
                           height: size.height * 0.12,
                           child: ListView.builder(
                             scrollDirection: Axis.horizontal,
-                            itemCount: 5,
+                            itemCount: controller.rooms.length,
                             itemBuilder: (context, index) {
                               return GestureDetector(
                                 child: RoomSelector(
