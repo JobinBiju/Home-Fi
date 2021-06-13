@@ -11,13 +11,14 @@ class DeviceSelectionController extends GetxController {
         print('${r.device.name} found! rssi: ${r.rssi}');
       }
     });
-    flutterBlue.stopScan();
+    subscription.cancel();
+    // flutterBlue.stopScan();
   }
 
   @override
   void onInit() {
     super.onInit();
-    flutterBlue.startScan(timeout: Duration(seconds: 4));
+    flutterBlue.startScan(timeout: Duration(seconds: 8));
     getBlDevices();
   }
 

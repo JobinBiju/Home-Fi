@@ -7,6 +7,6 @@ class DeviceSelectionView extends GetView<DeviceSelectionController> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold();
   }
 }
