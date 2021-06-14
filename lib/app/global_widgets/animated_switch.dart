@@ -5,7 +5,7 @@ import '../theme/color_theme.dart';
 class AnimatedSwitch extends StatelessWidget {
   final List<bool> isToggled;
   final int index;
-  final void Function()? onTap;
+  final void Function() onTap;
 
   const AnimatedSwitch({
     Key? key,
