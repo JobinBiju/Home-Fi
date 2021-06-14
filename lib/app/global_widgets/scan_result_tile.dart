@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
+import 'package:home_fi/app/theme/text_theme.dart';
 
 class ScanResultTile extends StatelessWidget {
   final ScanResult result;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   const ScanResultTile({
     Key? key,
@@ -16,10 +17,23 @@ class ScanResultTile extends StatelessWidget {
     return ExpansionTile(
       title: _buildTitle(context),
       leading: Text(result.rssi.toString()),
-      trailing: RaisedButton(
-        child: Text('Connect'),
-        color: Colors.black,
-        textColor: Colors.white,
+      trailing: ElevatedButton(
+        child: Text(
+          'Connect',
+          style: HomeFiTextTheme.kSubHeadTextStyle.copyWith(
+            color: Colors.white,
+          ),
+        ),
+        style: ElevatedButton.styleFrom(
+          primary: Theme.of(context).primaryColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+            side: BorderSide(
+              color: Theme.of(context).primaryColor,
+            ),
+          ),
+          padding: EdgeInsets.all(5),
+        ),
         onPressed: (result.advertisementData.connectable) ? onTap : null,
       ),
       children: [],
