@@ -46,9 +46,4 @@ class ScanResultTile extends StatelessWidget {
       return Text(result.device.id.toString());
     }
   }
-
-  String getNiceHexArray(List<int> bytes) {
-    return '[${bytes.map((i) => i.toRadixString(16).padLeft(2, '0')).join(', ')}]'
-        .toUpperCase();
-  }
 }
