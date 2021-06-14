@@ -48,7 +48,7 @@ class RoomSelector extends StatelessWidget {
           SizedBox(height: Get.height * 0.01),
           Text(
             roomName,
-            style: kSub2HeadTextStyle.copyWith(
+            style: HomeFiTextTheme.kSub2HeadTextStyle.copyWith(
                 color: Theme.of(context).primaryColorDark, fontSize: 10),
           ),
         ],

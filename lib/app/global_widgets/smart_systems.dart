@@ -79,7 +79,7 @@ class SmartSystem extends StatelessWidget {
                     left: 15,
                     child: Text(
                       title,
-                      style: kSub2HeadTextStyle.copyWith(
+                      style: HomeFiTextTheme.kSub2HeadTextStyle.copyWith(
                         color: GFTheme.primaryMaroon,
                       ),
                     ),

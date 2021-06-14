@@ -33,7 +33,7 @@ class DashboardView extends GetView<HomeController> {
                 children: [
                   Text(
                     'Welcome\nHome, ${controller.userName}',
-                    style: kSubHeadTextStyle.copyWith(
+                    style: HomeFiTextTheme.kSubHeadTextStyle.copyWith(
                         color: Theme.of(context).primaryColorDark),
                   ),
                   GestureDetector(
@@ -59,7 +59,7 @@ class DashboardView extends GetView<HomeController> {
                     SizedBox(height: size.height * 0.02),
                     Text(
                       'Rooms',
-                      style: kSub2HeadTextStyle.copyWith(
+                      style: HomeFiTextTheme.kSub2HeadTextStyle.copyWith(
                           color: Theme.of(context).primaryColorDark),
                     ),
                     SizedBox(height: size.height * 0.02),
@@ -112,13 +112,13 @@ class DashboardView extends GetView<HomeController> {
                           children: [
                             Text(
                               'Room\nTemperature',
-                              style: kSub2HeadTextStyle.copyWith(
+                              style: HomeFiTextTheme.kSub2HeadTextStyle.copyWith(
                                 color: Theme.of(context).primaryColorDark,
                               ),
                             ),
                             Text(
                               '29°c',
-                              style: kSub2HeadTextStyle.copyWith(
+                              style: HomeFiTextTheme.kSub2HeadTextStyle.copyWith(
                                 color: Theme.of(context).primaryColorDark,
                                 fontSize: 28,
                               ),
@@ -130,7 +130,7 @@ class DashboardView extends GetView<HomeController> {
                     SizedBox(height: size.height * 0.03),
                     Text(
                       'Smart Systems',
-                      style: kSub2HeadTextStyle.copyWith(
+                      style: HomeFiTextTheme.kSub2HeadTextStyle.copyWith(
                           color: Theme.of(context).primaryColorDark),
                     ),
                     SizedBox(height: size.height * 0.03),
