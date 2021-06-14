@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 import 'package:get/get.dart';
+import 'package:home_fi/app/global_widgets/scan_result_tile.dart';
 import 'package:home_fi/app/modules/device_selection/controllers/device_selection_controller.dart';
+import 'package:home_fi/app/modules/home/views/home_view.dart';
 
 class DeviceSelectionView extends StatelessWidget {
   @override
@@ -58,6 +60,9 @@ class FindDevicesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Find Devices'),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
       ),
       body: RefreshIndicator(
         onRefresh: () =>
@@ -89,24 +94,28 @@ class FindDevicesScreen extends StatelessWidget {
                       .toList(),
                 ),
               ),
-              // StreamBuilder<List<ScanResult>>(
-              //   stream: FlutterBlue.instance.scanResults,
-              //   initialData: [],
-              //   builder: (c, snapshot) => Column(
-              //     children: snapshot.data
-              //         .map(
-              //           (r) => ScanResultTile(
-              //             result: r,
-              //             onTap: () => Navigator.of(context)
-              //                 .push(MaterialPageRoute(builder: (context) {
-              //               r.device.connect();
-              //               return SensorPage(device: r.device);
-              //             })),
-              //           ),
-              //         )
-              //         .toList(),
-              //   ),
-              // ),
+              StreamBuilder<List<ScanResult>>(
+                stream: FlutterBlue.instance.scanResults,
+                initialData: [],
+                builder: (c, snapshot) => Column(
+                  children: snapshot.data!
+                      .map(
+                        (r) => ScanResultTile(
+                          result: r,
+                          onTap: () {
+                            // Navigator.of(context)
+                            //     .push(MaterialPageRoute(builder: (context) {
+                            //
+                            //   return SensorPage(device: r.device);
+                            // }));
+                            r.device.connect();
+                            Get.to(HomeView());
+                          },
+                        ),
+                      )
+                      .toList(),
+                ),
+              ),
             ],
           ),
         ),
@@ -127,6 +136,7 @@ class FindDevicesScreen extends StatelessWidget {
               onPressed: () => FlutterBlue.instance.startScan(
                 timeout: Duration(seconds: 4),
               ),
+              backgroundColor: Theme.of(context).primaryColor,
             );
           }
         },
