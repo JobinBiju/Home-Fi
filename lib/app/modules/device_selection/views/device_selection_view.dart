@@ -4,8 +4,9 @@ import 'package:get/get.dart';
 import 'package:home_fi/app/global_widgets/scan_result_tile.dart';
 import 'package:home_fi/app/modules/device_selection/controllers/device_selection_controller.dart';
 import 'package:home_fi/app/modules/home/views/home_view.dart';
+import 'package:home_fi/app/theme/text_theme.dart';
 
-class DeviceSelectionView extends StatelessWidget {
+class DeviceSelectionView extends GetView<DeviceSelectionController> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<BluetoothState>(
@@ -42,10 +43,8 @@ class BluetoothOffScreen extends StatelessWidget {
             ),
             Text(
               'Bluetooth Adapter is ${state.toString().substring(15)}.',
-              style: Theme.of(context)
-                  .primaryTextTheme
-                  .subhead
-                  ?.copyWith(color: Colors.white),
+              style: HomeFiTextTheme.kSubHeadTextStyle
+                  .copyWith(color: Colors.white),
             ),
           ],
         ),
