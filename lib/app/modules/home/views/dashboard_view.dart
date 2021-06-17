@@ -94,7 +94,8 @@ class DashboardView extends GetView<HomeController> {
                     SizedBox(height: size.height * 0.03),
                     GestureDetector(
                       onTap: () {
-                        Get.to(() => RoomTempView());
+                        Get.to(
+                            () => RoomTempView(d: controller.connectedDevice));
                       },
                       child: Container(
                         height: Get.height * 0.082,
@@ -118,13 +119,42 @@ class DashboardView extends GetView<HomeController> {
                                 color: Theme.of(context).primaryColorDark,
                               ),
                             ),
-                            Text(
-                              '29°c',
-                              style:
-                                  HomeFiTextTheme.kSub2HeadTextStyle.copyWith(
-                                color: Theme.of(context).primaryColorDark,
-                                fontSize: 28,
-                              ),
+                            Obx(
+                              () => !controller.isReady.value
+                                  ? Center(
+                                      child: CircularProgressIndicator(),
+                                    )
+                                  : StreamBuilder<List<int>>(
+                                      stream: controller.stream,
+                                      builder: (BuildContext context,
+                                          AsyncSnapshot<List<int>> snapshot) {
+                                        if (snapshot.hasError)
+                                          return Text('NULL');
+
+                                        if (snapshot.connectionState ==
+                                            ConnectionState.active) {
+                                          controller
+                                              .retreveSensorData(snapshot.data);
+
+                                          return Text(
+                                            '${controller.temp.value}°c',
+                                            style: HomeFiTextTheme
+                                                .kSub2HeadTextStyle
+                                                .copyWith(
+                                              color: Theme.of(context)
+                                                  .primaryColorDark,
+                                              fontSize: 28,
+                                            ),
+                                          );
+                                        } else {
+                                          return Column(
+                                            children: [
+                                              Text('Check the stream'),
+                                            ],
+                                          );
+                                        }
+                                      },
+                                    ),
                             ),
                           ],
                         ),

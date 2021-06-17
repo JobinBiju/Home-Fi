@@ -89,7 +89,7 @@ class FindDevicesScreen extends StatelessWidget {
                         //   return SensorPage(device: r.device);
                         // }));
                         r.device.connect();
-                        Get.off(() => HomeView());
+                        Get.off(() => HomeView(device: r.device));
                       },
                     ),
                   )

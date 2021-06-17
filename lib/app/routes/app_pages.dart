@@ -12,24 +12,24 @@ import 'package:home_fi/app/modules/splash_screen/views/splash_screen_view.dart'
 part 'app_routes.dart';
 
 class AppPages {
-  static const INITIAL = Routes.DEVICE_SELECTION;
+  static const INITIAL = Routes.SPLASH_SCREEN;
 
   static final routes = [
-    GetPage(
-      name: _Paths.HOME,
-      page: () => HomeView(),
-      binding: HomeBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.HOME,
+    //   page: () => HomeView(),
+    //   binding: HomeBinding(),
+    // ),
     GetPage(
       name: _Paths.SPLASH_SCREEN,
       page: () => SplashScreenView(),
       binding: SplashScreenBinding(),
     ),
-    GetPage(
-      name: _Paths.ROOM_TEMP,
-      page: () => RoomTempView(),
-      binding: RoomTempBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.ROOM_TEMP,
+    //   page: () => RoomTempView(),
+    //   binding: RoomTempBinding(),
+    // ),
     GetPage(
       name: _Paths.DEVICE_SELECTION,
       page: () => DeviceSelectionView(),
