@@ -42,7 +42,7 @@ class BluetoothOffScreen extends StatelessWidget {
               color: Colors.white54,
             ),
             Text(
-              'Bluetooth Adapter is ${state.toString().substring(15)}.',
+              'Bluetooth Adapter is\n${state.toString().substring(15)}.',
               style: HomeFiTextTheme.kSubHeadTextStyle
                   .copyWith(color: Colors.white),
             ),
@@ -74,30 +74,31 @@ class FindDevicesScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              StreamBuilder<List<BluetoothDevice>>(
-                stream: Stream.periodic(Duration(seconds: 2))
-                    .asyncMap((_) => FlutterBlue.instance.connectedDevices),
-                initialData: [],
-                builder: (c, snapshot) => Column(
-                  children: snapshot.data!
-                      .map(
-                        (d) => ListTile(
-                          title: Text(d.name),
-                          subtitle: Text(d.id.toString()),
-                          trailing: StreamBuilder<BluetoothDeviceState>(
-                            stream: d.state,
-                            initialData: BluetoothDeviceState.disconnected,
-                            builder: (c, snapshot) {
-                              if (snapshot.data ==
-                                  BluetoothDeviceState.connected) {}
-                              return Text(snapshot.data.toString());
-                            },
-                          ),
-                        ),
-                      )
-                      .toList(),
-                ),
-              ),
+              SizedBox(height: Get.height * 0.01),
+              // StreamBuilder<List<BluetoothDevice>>(
+              //   stream: Stream.periodic(Duration(seconds: 2))
+              //       .asyncMap((_) => FlutterBlue.instance.connectedDevices),
+              //   initialData: [],
+              //   builder: (c, snapshot) => Column(
+              //     children: snapshot.data!
+              //         .map(
+              //           (d) => ListTile(
+              //             title: Text(d.name),
+              //             subtitle: Text(d.id.toString()),
+              //             trailing: StreamBuilder<BluetoothDeviceState>(
+              //               stream: d.state,
+              //               initialData: BluetoothDeviceState.disconnected,
+              //               builder: (c, snapshot) {
+              //                 if (snapshot.data ==
+              //                     BluetoothDeviceState.connected) {}
+              //                 return Text(snapshot.data.toString());
+              //               },
+              //             ),
+              //           ),
+              //         )
+              //         .toList(),
+              //   ),
+              // ),
               StreamBuilder<List<ScanResult>>(
                 stream: FlutterBlue.instance.scanResults,
                 initialData: [],
@@ -132,7 +133,7 @@ class FindDevicesScreen extends StatelessWidget {
             return FloatingActionButton(
               child: Icon(Icons.stop, color: Colors.white),
               onPressed: () => FlutterBlue.instance.stopScan(),
-              backgroundColor: Colors.red,
+              backgroundColor: Theme.of(context).primaryColor.withOpacity(0.6),
             );
           } else {
             return FloatingActionButton(

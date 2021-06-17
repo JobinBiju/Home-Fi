@@ -25,8 +25,8 @@ class RoomSelector extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            height: Get.height * 0.085,
-            width: Get.height * 0.085,
+            height: Get.height * 0.083,
+            width: Get.height * 0.083,
             padding: EdgeInsets.all(14),
             decoration: BoxDecoration(
               color: isSelected

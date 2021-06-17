@@ -33,8 +33,8 @@ class DashboardView extends GetView<HomeController> {
                 children: [
                   Text(
                     'Welcome\nHome, ${controller.userName}',
-                    style: HomeFiTextTheme.kSubHeadTextStyle.copyWith(
-                        color: Theme.of(context).primaryColorDark),
+                    style: HomeFiTextTheme.kSubHeadTextStyle
+                        .copyWith(color: Theme.of(context).primaryColorDark),
                   ),
                   GestureDetector(
                     // onTap: () => Get.to(() => ProfileView()),
@@ -59,11 +59,12 @@ class DashboardView extends GetView<HomeController> {
                     SizedBox(height: size.height * 0.02),
                     Text(
                       'Rooms',
-                      style: HomeFiTextTheme.kSub2HeadTextStyle.copyWith(
-                          color: Theme.of(context).primaryColorDark),
+                      style: HomeFiTextTheme.kSub2HeadTextStyle
+                          .copyWith(color: Theme.of(context).primaryColorDark),
                     ),
                     SizedBox(height: size.height * 0.02),
                     GetBuilder<HomeController>(
+                      init: HomeController(),
                       id: 1,
                       builder: (_) {
                         return Container(
@@ -112,13 +113,15 @@ class DashboardView extends GetView<HomeController> {
                           children: [
                             Text(
                               'Room\nTemperature',
-                              style: HomeFiTextTheme.kSub2HeadTextStyle.copyWith(
+                              style:
+                                  HomeFiTextTheme.kSub2HeadTextStyle.copyWith(
                                 color: Theme.of(context).primaryColorDark,
                               ),
                             ),
                             Text(
                               '29°c',
-                              style: HomeFiTextTheme.kSub2HeadTextStyle.copyWith(
+                              style:
+                                  HomeFiTextTheme.kSub2HeadTextStyle.copyWith(
                                 color: Theme.of(context).primaryColorDark,
                                 fontSize: 28,
                               ),
@@ -130,8 +133,8 @@ class DashboardView extends GetView<HomeController> {
                     SizedBox(height: size.height * 0.03),
                     Text(
                       'Smart Systems',
-                      style: HomeFiTextTheme.kSub2HeadTextStyle.copyWith(
-                          color: Theme.of(context).primaryColorDark),
+                      style: HomeFiTextTheme.kSub2HeadTextStyle
+                          .copyWith(color: Theme.of(context).primaryColorDark),
                     ),
                     SizedBox(height: size.height * 0.03),
                     GetBuilder<HomeController>(
