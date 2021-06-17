@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 
 import 'package:get/get.dart';
+import 'package:home_fi/app/theme/text_theme.dart';
 
 import '../controllers/room_temp_controller.dart';
 
@@ -16,14 +17,20 @@ class RoomTempView extends GetView<RoomTempController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('RoomTempView'),
+        title: Text(
+          'Sensor Data',
+          style:
+              HomeFiTextTheme.kSub2HeadTextStyle.copyWith(color: Colors.black),
+        ),
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
           onPressed: () {
             Get.back();
           },
         ),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
       ),
       body: Container(
         height: Get.height,
@@ -41,21 +48,20 @@ class RoomTempView extends GetView<RoomTempController> {
                       return Text('Error: ${snapshot.error}');
 
                     if (snapshot.connectionState == ConnectionState.active) {
-                      // geting data from bluetooth
-                      // var currentValue = _dataParser(snapshot.data);
-                      // _temphumidata = currentValue.split(",");
-                      // if (_temphumidata[0] != "nan") {
-                      //   _temp = double.parse('${_temphumidata[0]}');
-                      // }
-                      // if (_temphumidata[1] != "nan") {
-                      //   _humidity = double.parse('${_temphumidata[1]}');
-                      // }
                       controller.retreveSensorData(snapshot.data);
 
                       return Column(
                         children: [
-                          Text(controller.temp.value.toString()),
-                          Text(controller.humidity.value.toString()),
+                          SizedBox(height: 50),
+                          Text(
+                            'Temp: ${controller.temp.value}',
+                            style: HomeFiTextTheme.kSubHeadTextStyle,
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            'Humidity: ${controller.humidity.value}',
+                            style: HomeFiTextTheme.kSubHeadTextStyle,
+                          ),
                         ],
                       );
                     } else {
