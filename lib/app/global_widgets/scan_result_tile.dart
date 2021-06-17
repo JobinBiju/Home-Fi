@@ -20,8 +20,9 @@ class ScanResultTile extends StatelessWidget {
       trailing: ElevatedButton(
         child: Text(
           'Connect',
-          style: HomeFiTextTheme.kSubHeadTextStyle.copyWith(
+          style: HomeFiTextTheme.kSub2HeadTextStyle.copyWith(
             color: Colors.white,
+            fontSize: 16,
           ),
         ),
         style: ElevatedButton.styleFrom(
@@ -32,7 +33,7 @@ class ScanResultTile extends StatelessWidget {
               color: Theme.of(context).primaryColor,
             ),
           ),
-          padding: EdgeInsets.all(5),
+          padding: EdgeInsets.symmetric(horizontal: 15),
         ),
         onPressed: (result.advertisementData.connectable) ? onTap : null,
       ),
@@ -48,6 +49,9 @@ class ScanResultTile extends StatelessWidget {
         children: <Widget>[
           Text(
             result.device.name,
+            style: HomeFiTextTheme.kSub2HeadTextStyle.copyWith(
+              fontSize: 16,
+            ),
             overflow: TextOverflow.ellipsis,
           ),
           Text(

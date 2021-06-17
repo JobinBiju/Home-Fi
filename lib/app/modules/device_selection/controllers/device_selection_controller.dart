@@ -3,23 +3,22 @@ import 'package:get/get.dart';
 
 class DeviceSelectionController extends GetxController {
   FlutterBlue flutterBlue = FlutterBlue.instance;
+  late BluetoothDevice d;
 
   getBlDevices() {
-    var subscription = flutterBlue.scanResults.listen((results) {
-      // do something with scan results
-      for (ScanResult r in results) {
-        print('${r.device.name} found! rssi: ${r.rssi}');
-      }
-    });
-    subscription.cancel();
+    // var subscription = flutterBlue.scanResults.listen((results) {
+    //   // do something with scan results
+    //   for (ScanResult r in results) {
+    //     print('${r.device.name} found! rssi: ${r.rssi}');
+    //   }
+    // });
+    // subscription.cancel();
     // flutterBlue.stopScan();
   }
 
   @override
   void onInit() {
     super.onInit();
-    flutterBlue.startScan(timeout: Duration(seconds: 8));
-    getBlDevices();
   }
 
   @override
@@ -29,4 +28,16 @@ class DeviceSelectionController extends GetxController {
 
   @override
   void onClose() {}
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+  
+    return other is DeviceSelectionController &&
+      other.flutterBlue == flutterBlue &&
+      other.d == d;
+  }
+
+  @override
+  int get hashCode => flutterBlue.hashCode ^ d.hashCode;
 }

@@ -58,17 +58,22 @@ class FindDevicesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Find Devices'),
+        title: Text(
+          'Find Devices',
+          style:
+              HomeFiTextTheme.kSub2HeadTextStyle.copyWith(color: Colors.black),
+        ),
         elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: true,
       ),
       body: RefreshIndicator(
+        color: Theme.of(context).primaryColor,
         onRefresh: () =>
             FlutterBlue.instance.startScan(timeout: Duration(seconds: 4)),
         child: SingleChildScrollView(
           child: Column(
-            children: <Widget>[
+            children: [
               StreamBuilder<List<BluetoothDevice>>(
                 stream: Stream.periodic(Duration(seconds: 2))
                     .asyncMap((_) => FlutterBlue.instance.connectedDevices),
@@ -108,7 +113,7 @@ class FindDevicesScreen extends StatelessWidget {
                             //   return SensorPage(device: r.device);
                             // }));
                             r.device.connect();
-                            Get.to(HomeView());
+                            Get.off(HomeView());
                           },
                         ),
                       )
@@ -125,13 +130,13 @@ class FindDevicesScreen extends StatelessWidget {
         builder: (c, snapshot) {
           if (snapshot.data == true) {
             return FloatingActionButton(
-              child: Icon(Icons.stop),
+              child: Icon(Icons.stop, color: Colors.white),
               onPressed: () => FlutterBlue.instance.stopScan(),
               backgroundColor: Colors.red,
             );
           } else {
             return FloatingActionButton(
-              child: Icon(Icons.search),
+              child: Icon(Icons.search, color: Colors.white),
               onPressed: () => FlutterBlue.instance.startScan(
                 timeout: Duration(seconds: 4),
               ),

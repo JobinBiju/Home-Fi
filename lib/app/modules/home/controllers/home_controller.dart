@@ -41,12 +41,14 @@ class HomeController extends GetxController {
     return homeViews.elementAt(currentIndex);
   }
 
+  // function to move between each room
   void roomChange(int index) {
     selectedRoom = [false, false, false, false, false];
     selectedRoom[index] = true;
     update([1, true]);
   }
 
+  // switches in the room
   onSwitched(int index) {
     isToggled[index] = !isToggled[index];
     update([2, true]);
