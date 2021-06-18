@@ -48,8 +48,10 @@ class HomeController extends GetxController {
   String characteristicUuid = "beb5483e-36e1-4688-b7f5-ea07361b26a8";
   var isReady = false.obs;
   late Stream<List<int>> stream;
+  late Stream<List<int>> streamR;
   late List temphumidata;
   var temp = 0.0.obs;
+  var humidity = 0.0.obs;
 
   // function to return correct view on bottom navBar switch
   Widget navBarSwitcher() {
@@ -78,6 +80,7 @@ class HomeController extends GetxController {
           if (characteristic.uuid.toString() == characteristicUuid) {
             characteristic.setNotifyValue(!characteristic.isNotifying);
             stream = characteristic.value;
+            streamR = characteristic.value;
             isReady.value = true;
           }
         });
@@ -92,6 +95,9 @@ class HomeController extends GetxController {
 
     if (temphumidata[0] != "nan") {
       temp.value = double.parse('${temphumidata[0]}');
+    }
+    if (temphumidata[1] != "nan") {
+      humidity.value = double.parse('${temphumidata[1]}');
     }
   }
 

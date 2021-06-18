@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 
 import 'package:get/get.dart';
+import 'package:home_fi/app/modules/home/controllers/home_controller.dart';
 import 'package:home_fi/app/theme/text_theme.dart';
 
 import '../controllers/room_temp_controller.dart';
 
 class RoomTempView extends GetView<RoomTempController> {
   final RoomTempController controller = Get.put(RoomTempController());
+  final HomeController hController = Get.put(HomeController());
   final BluetoothDevice d;
 
   RoomTempView({required this.d}) {
-    controller.discoverServices(d);
+    hController.discoverServices(d);
   }
   @override
   Widget build(BuildContext context) {
@@ -36,34 +38,21 @@ class RoomTempView extends GetView<RoomTempController> {
         height: Get.height,
         width: Get.width,
         child: Obx(
-          () => !controller.isReady.value
+          () => !hController.isReady.value
               ? Center(
                   child: CircularProgressIndicator(),
                 )
               : StreamBuilder<List<int>>(
-                  stream: controller.stream,
+                  stream: hController.streamR,
                   builder: (BuildContext context,
                       AsyncSnapshot<List<int>> snapshot) {
                     if (snapshot.hasError)
                       return Text('Error: ${snapshot.error}');
 
                     if (snapshot.connectionState == ConnectionState.active) {
-                      controller.retreveSensorData(snapshot.data);
+                      hController.retreveSensorData(snapshot.data);
 
-                      return Column(
-                        children: [
-                          SizedBox(height: 50),
-                          Text(
-                            'Temp: ${controller.temp.value}',
-                            style: HomeFiTextTheme.kSubHeadTextStyle,
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            'Humidity: ${controller.humidity.value}',
-                            style: HomeFiTextTheme.kSubHeadTextStyle,
-                          ),
-                        ],
-                      );
+                      return GaugeUI();
                     } else {
                       return Column(
                         children: [
@@ -72,8 +61,36 @@ class RoomTempView extends GetView<RoomTempController> {
                         ],
                       );
                     }
-                  }),
+                  },
+                ),
         ),
+      ),
+    );
+  }
+}
+
+class GaugeUI extends GetView<RoomTempController> {
+  final HomeController hController = Get.put(HomeController());
+  GaugeUI({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: Get.height * 0.8,
+      width: Get.width,
+      child: Column(
+        children: [
+          SizedBox(height: 50),
+          Text(
+            'Temp: ${hController.temp.value}',
+            style: HomeFiTextTheme.kSubHeadTextStyle,
+          ),
+          SizedBox(height: 10),
+          Text(
+            'Humidity: ${hController.humidity.value}',
+            style: HomeFiTextTheme.kSubHeadTextStyle,
+          ),
+        ],
       ),
     );
   }
