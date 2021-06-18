@@ -7,13 +7,11 @@ import 'package:home_fi/app/data/models/room_model.dart';
 import 'package:home_fi/app/modules/home/views/dashboard_view.dart';
 import 'package:home_fi/app/modules/home/views/settings_view.dart';
 import 'package:home_fi/app/modules/home/views/users_view.dart';
-import 'package:home_fi/app/modules/room_temp/controllers/room_temp_controller.dart';
 
 class HomeController extends GetxController {
   // bottom nav current index.
   var _currentIndex = 0.obs;
   get currentIndex => this._currentIndex.value;
-  set currentIndex(index) => this._currentIndex.value = index;
 
   // userData
   String userName = 'Jobin';
@@ -53,6 +51,12 @@ class HomeController extends GetxController {
   var temp = 0.0.obs;
   var humidity = 0.0.obs;
 
+  // funtion to set current index
+  setCurrentIndex(int index) {
+    _currentIndex.value = index;
+    Get.forceAppUpdate();
+  }
+
   // function to return correct view on bottom navBar switch
   Widget navBarSwitcher() {
     return homeViews.elementAt(currentIndex);
@@ -80,8 +84,10 @@ class HomeController extends GetxController {
           if (characteristic.uuid.toString() == characteristicUuid) {
             characteristic.setNotifyValue(!characteristic.isNotifying);
             stream = characteristic.value;
+            stream.asBroadcastStream();
             streamR = characteristic.value;
             isReady.value = true;
+            update([11, true]);
           }
         });
       }

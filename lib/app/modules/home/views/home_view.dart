@@ -54,7 +54,7 @@ class HomeView extends GetView<HomeController> {
                                 .withOpacity(0.5),
                       ),
                       onPressed: () {
-                        controller.currentIndex = 0;
+                        controller.setCurrentIndex(0);
                       },
                     ),
                     IconButton(
@@ -68,7 +68,7 @@ class HomeView extends GetView<HomeController> {
                                 .withOpacity(0.5),
                       ),
                       onPressed: () {
-                        controller.currentIndex = 1;
+                        controller.setCurrentIndex(1);
                       },
                     ),
                     IconButton(
@@ -82,7 +82,7 @@ class HomeView extends GetView<HomeController> {
                                 .withOpacity(0.5),
                       ),
                       onPressed: () {
-                        controller.currentIndex = 2;
+                        controller.setCurrentIndex(2);
                       },
                     ),
                   ],

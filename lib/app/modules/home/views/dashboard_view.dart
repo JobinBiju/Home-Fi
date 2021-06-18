@@ -119,43 +119,41 @@ class DashboardView extends GetView<HomeController> {
                                 color: Theme.of(context).primaryColorDark,
                               ),
                             ),
-                            Obx(
-                              () => !controller.isReady.value
-                                  ? Center(
-                                      child: CircularProgressIndicator(),
-                                    )
-                                  : StreamBuilder<List<int>>(
-                                      stream: controller.stream,
-                                      builder: (BuildContext context,
-                                          AsyncSnapshot<List<int>> snapshot) {
-                                        if (snapshot.hasError)
-                                          return Text('NULL');
+                            !controller.isReady.value
+                                ? Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : StreamBuilder<List<int>>(
+                                    stream: controller.stream,
+                                    builder: (BuildContext context,
+                                        AsyncSnapshot<List<int>> snapshot) {
+                                      if (snapshot.hasError)
+                                        return Text('NULL');
 
-                                        if (snapshot.connectionState ==
-                                            ConnectionState.active) {
-                                          controller
-                                              .retreveSensorData(snapshot.data);
+                                      if (snapshot.connectionState ==
+                                          ConnectionState.active) {
+                                        controller
+                                            .retreveSensorData(snapshot.data);
 
-                                          return Text(
-                                            '${controller.temp.value}°c',
-                                            style: HomeFiTextTheme
-                                                .kSub2HeadTextStyle
-                                                .copyWith(
-                                              color: Theme.of(context)
-                                                  .primaryColorDark,
-                                              fontSize: 28,
-                                            ),
-                                          );
-                                        } else {
-                                          return Column(
-                                            children: [
-                                              Text('Check the stream'),
-                                            ],
-                                          );
-                                        }
-                                      },
-                                    ),
-                            ),
+                                        return Text(
+                                          '${controller.temp.value}°c',
+                                          style: HomeFiTextTheme
+                                              .kSub2HeadTextStyle
+                                              .copyWith(
+                                            color: Theme.of(context)
+                                                .primaryColorDark,
+                                            fontSize: 28,
+                                          ),
+                                        );
+                                      } else {
+                                        return Column(
+                                          children: [
+                                            Text('Check the stream'),
+                                          ],
+                                        );
+                                      }
+                                    },
+                                  ),
                           ],
                         ),
                       ),
