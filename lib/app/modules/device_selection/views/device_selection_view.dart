@@ -43,8 +43,9 @@ class BluetoothOffScreen extends StatelessWidget {
             ),
             Text(
               'Bluetooth Adapter is\n${state.toString().substring(15)}.',
+              textAlign: TextAlign.center,
               style: HomeFiTextTheme.kSubHeadTextStyle
-                  .copyWith(color: Colors.white),
+                  .copyWith(color: Colors.white, height: 1.5),
             ),
           ],
         ),
