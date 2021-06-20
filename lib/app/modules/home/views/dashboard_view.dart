@@ -117,13 +117,13 @@ class DashboardView extends GetView<HomeController> {
                                         img: 'assets/icons/temperature.png',
                                         title: 'Temperature',
                                         value: '${controller.temp.value}°C',
-                                        horizontalPadding: Get.width * 0.035,
+                                        horizontalPadding: Get.width * 0.040,
                                       ),
                                       TempHumidBanner(
                                         img: 'assets/icons/humidity.png',
                                         title: 'Humidity',
                                         value: '${controller.humidity.value}%',
-                                        horizontalPadding: Get.width * 0.044,
+                                        horizontalPadding: Get.width * 0.042,
                                       ),
                                     ],
                                   ),
@@ -220,7 +220,7 @@ class TempHumidBanner extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Container(
       height: Get.height * 0.08,
-      width: Get.width * 0.4,
+      width: Get.width * 0.38,
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
