@@ -1,16 +1,16 @@
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 
-class RoomTempController extends GetxController {
-  @override
-  void onInit() {
-    super.onInit();
-  }
+// class RoomTempController extends GetxController {
+//   @override
+//   void onInit() {
+//     super.onInit();
+//   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+//   @override
+//   void onReady() {
+//     super.onReady();
+//   }
 
-  @override
-  void onClose() {}
-}
+//   @override
+//   void onClose() {}
+// }

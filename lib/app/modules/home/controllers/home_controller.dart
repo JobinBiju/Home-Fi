@@ -48,8 +48,8 @@ class HomeController extends GetxController {
   late Stream<List<int>> stream;
   late Stream<List<int>> streamR;
   late List temphumidata;
-  var temp = 0.0.obs;
-  var humidity = 0.0.obs;
+  var temp = 0.obs;
+  var humidity = 0.obs;
 
   // funtion to set current index
   setCurrentIndex(int index) {
@@ -84,10 +84,7 @@ class HomeController extends GetxController {
           if (characteristic.uuid.toString() == characteristicUuid) {
             characteristic.setNotifyValue(!characteristic.isNotifying);
             stream = characteristic.value;
-            stream.asBroadcastStream();
-            streamR = characteristic.value;
             isReady.value = true;
-            update([11, true]);
           }
         });
       }
@@ -100,10 +97,10 @@ class HomeController extends GetxController {
     temphumidata = currentValue.split(",");
 
     if (temphumidata[0] != "nan") {
-      temp.value = double.parse('${temphumidata[0]}');
+      temp.value = double.parse('${temphumidata[0]}').toInt();
     }
     if (temphumidata[1] != "nan") {
-      humidity.value = double.parse('${temphumidata[1]}');
+      humidity.value = double.parse('${temphumidata[1]}').toInt();
     }
   }
 

@@ -1,12 +1,12 @@
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 
-import '../controllers/room_temp_controller.dart';
+// import '../controllers/room_temp_controller.dart';
 
-class RoomTempBinding extends Bindings {
-  @override
-  void dependencies() {
-    Get.lazyPut<RoomTempController>(
-      () => RoomTempController(),
-    );
-  }
-}
+// class RoomTempBinding extends Bindings {
+//   @override
+//   void dependencies() {
+//     Get.lazyPut<RoomTempController>(
+//       () => RoomTempController(),
+//     );
+//   }
+// }
