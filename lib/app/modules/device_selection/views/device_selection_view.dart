@@ -38,13 +38,14 @@ class BluetoothOffScreen extends StatelessWidget {
           children: <Widget>[
             Icon(
               Icons.bluetooth_disabled,
-              size: 200.0,
+              size: 180.0,
               color: Colors.white54,
             ),
             Text(
               'Bluetooth Adapter is\n${state.toString().substring(15)}.',
+              textAlign: TextAlign.center,
               style: HomeFiTextTheme.kSubHeadTextStyle
-                  .copyWith(color: Colors.white),
+                  .copyWith(color: Colors.white, height: 1.5),
             ),
           ],
         ),
