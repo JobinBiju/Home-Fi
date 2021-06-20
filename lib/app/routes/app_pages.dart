@@ -21,11 +21,6 @@ class AppPages {
       page: () => SplashScreenView(),
       binding: SplashScreenBinding(),
     ),
-    // GetPage(
-    //   name: _Paths.ROOM_TEMP,
-    //   page: () => RoomTempView(),
-    //   binding: RoomTempBinding(),
-    // ),
     GetPage(
       name: _Paths.DEVICE_SELECTION,
       page: () => DeviceSelectionView(),

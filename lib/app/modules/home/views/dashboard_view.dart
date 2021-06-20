@@ -5,7 +5,6 @@ import 'package:home_fi/app/global_widgets/room_selector.dart';
 import 'package:home_fi/app/global_widgets/smart_systems.dart';
 import 'package:home_fi/app/global_widgets/user_avathar.dart';
 import 'package:home_fi/app/modules/home/controllers/home_controller.dart';
-import 'package:home_fi/app/modules/room_temp/views/room_temp_view.dart';
 import 'package:home_fi/app/theme/color_theme.dart';
 import 'package:home_fi/app/theme/text_theme.dart';
 
