@@ -23,5 +23,5 @@ samples, guidance on mobile development, and a full API reference.
 
 ## UI Till Now
 
-| <img align="left" alt="Splash Screen" src="assets/readmeFiles/Dash 1.jpg" width="270px" /> | <img align="left" alt="Welcome Screen" src="assets/readmeFiles/Dash 2.jpg" width="270px" /> |
+| <img align="left" alt="Splash Screen" src="assets/readmeFiles/Dash 1.jpg" width="250px" /> | <img align="left" alt="Welcome Screen" src="assets/readmeFiles/Dash 2.jpg" width="250px" /> |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
