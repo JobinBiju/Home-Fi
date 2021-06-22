@@ -11,7 +11,6 @@ import 'package:home_fi/app/theme/text_theme.dart';
 class DashboardView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-    controller.retreveSensorData();
     Size size = Get.size;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: size.width * 0.067),
