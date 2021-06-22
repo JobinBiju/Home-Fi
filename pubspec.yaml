@@ -35,4 +35,4 @@ flutter:
     - assets/icons/
     - assets/lottie/
     - assets/images/
-    - .env
+    - .env # API Key is stored here
