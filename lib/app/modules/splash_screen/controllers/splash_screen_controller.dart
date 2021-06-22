@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:home_fi/app/modules/device_selection/views/device_selection_view.dart';
+import 'package:home_fi/app/modules/home/views/home_view.dart';
 
 class SplashScreenController extends GetxController
     with SingleGetTickerProviderMixin {
@@ -23,7 +23,7 @@ class SplashScreenController extends GetxController
         // checkLogin();
         Timer(
           Duration(milliseconds: 1000),
-          () => Get.off(() => DeviceSelectionView()),
+          () => Get.off(() => HomeView()),
         );
       }
     });

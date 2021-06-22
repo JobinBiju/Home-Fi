@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blue/flutter_blue.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
@@ -8,12 +7,6 @@ import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   final HomeController controller = Get.put(HomeController());
-  final BluetoothDevice device;
-
-  HomeView({required this.device}) {
-    controller.connectedDevice = device;
-    controller.discoverServices(device);
-  }
 
   @override
   Widget build(BuildContext context) {

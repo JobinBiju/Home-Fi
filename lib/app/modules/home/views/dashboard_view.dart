@@ -11,6 +11,7 @@ import 'package:home_fi/app/theme/text_theme.dart';
 class DashboardView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
+    controller.retreveSensorData();
     Size size = Get.size;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: size.width * 0.067),
@@ -91,48 +92,35 @@ class DashboardView extends GetView<HomeController> {
                       },
                     ),
                     SizedBox(height: size.height * 0.03),
-                    !controller.isReady.value
-                        ? Center(
-                            child: CircularProgressIndicator(
-                              strokeWidth: 3,
-                            ),
-                          )
-                        : StreamBuilder<List<int>>(
-                            stream: controller.stream,
-                            builder: (BuildContext context,
-                                AsyncSnapshot<List<int>> snapshot) {
-                              if (snapshot.hasError) return Text('NULL');
-
-                              if (snapshot.connectionState ==
-                                  ConnectionState.active) {
-                                controller.retreveSensorData(snapshot.data);
-
-                                return Container(
-                                  width: Get.width,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      TempHumidBanner(
-                                        img: 'assets/icons/temperature.png',
-                                        title: 'Temperature',
-                                        value: '${controller.temp.value}°C',
-                                        horizontalPadding: Get.width * 0.040,
-                                      ),
-                                      TempHumidBanner(
-                                        img: 'assets/icons/humidity.png',
-                                        title: 'Humidity',
-                                        value: '${controller.humidity.value}%',
-                                        horizontalPadding: Get.width * 0.042,
-                                      ),
-                                    ],
+                    Obx(
+                      () => !controller.isReady.value
+                          ? Center(
+                              child: CircularProgressIndicator(
+                                strokeWidth: 3,
+                              ),
+                            )
+                          : Container(
+                              width: Get.width,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  TempHumidBanner(
+                                    img: 'assets/icons/temperature.png',
+                                    title: 'Temperature',
+                                    value: '${controller.temp.value}°C',
+                                    horizontalPadding: Get.width * 0.040,
                                   ),
-                                );
-                              } else {
-                                return Text('Null');
-                              }
-                            },
-                          ),
+                                  TempHumidBanner(
+                                    img: 'assets/icons/humidity.png',
+                                    title: 'Humidity',
+                                    value: '${controller.humidity.value}%',
+                                    horizontalPadding: Get.width * 0.042,
+                                  ),
+                                ],
+                              ),
+                            ),
+                    ),
                     SizedBox(height: size.height * 0.03),
                     Text(
                       'Smart Systems',
