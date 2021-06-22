@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:home_fi/app/data/models/humidity_model.dart';
+import 'package:home_fi/app/data/models/temperature_model.dart';
 import 'package:home_fi/app/global_widgets/room_selector.dart';
 import 'package:home_fi/app/global_widgets/smart_systems.dart';
 import 'package:home_fi/app/global_widgets/user_avathar.dart';
@@ -91,34 +93,91 @@ class DashboardView extends GetView<HomeController> {
                       },
                     ),
                     SizedBox(height: size.height * 0.03),
-                    Obx(
-                      () => !controller.isReady.value
-                          ? Center(
-                              child: CircularProgressIndicator(
-                                strokeWidth: 3,
-                              ),
-                            )
-                          : Container(
-                              width: Get.width,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  TempHumidBanner(
-                                    img: 'assets/icons/temperature.png',
-                                    title: 'Temperature',
-                                    value: '${controller.temp.value}°C',
-                                    horizontalPadding: Get.width * 0.040,
+                    Container(
+                      width: Get.width,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          StreamBuilder<Temperature>(
+                            stream: controller.tempStream.stream,
+                            builder: (context, snapshot) {
+                              if (!snapshot.hasData ||
+                                  snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                return TempHumidBanner(
+                                  img: 'assets/icons/temperature.png',
+                                  title: 'Temperature',
+                                  horizontalPadding: Get.width * 0.042,
+                                  child: SizedBox(
+                                    child: CircularProgressIndicator(
+                                      strokeWidth: 3,
+                                    ),
+                                    height: 18,
+                                    width: 18,
                                   ),
-                                  TempHumidBanner(
-                                    img: 'assets/icons/humidity.png',
-                                    title: 'Humidity',
-                                    value: '${controller.humidity.value}%',
-                                    horizontalPadding: Get.width * 0.042,
+                                );
+                              } else {
+                                var value =
+                                    double.parse(snapshot.data!.lastValue!)
+                                        .toInt();
+                                return TempHumidBanner(
+                                  img: 'assets/icons/temperature.png',
+                                  title: 'Temperature',
+                                  horizontalPadding: Get.width * 0.042,
+                                  child: Text(
+                                    '$value°C',
+                                    style: HomeFiTextTheme.kSub2HeadTextStyle
+                                        .copyWith(
+                                      color: Theme.of(context).primaryColorDark,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
-                                ],
-                              ),
-                            ),
+                                );
+                              }
+                            },
+                          ),
+                          StreamBuilder<Humidity>(
+                            stream: controller.humidStream.stream,
+                            builder: (context, snapshot) {
+                              if (!snapshot.hasData ||
+                                  snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                return TempHumidBanner(
+                                  img: 'assets/icons/humidity.png',
+                                  title: 'Humidity',
+                                  horizontalPadding: Get.width * 0.044,
+                                  child: SizedBox(
+                                    child: CircularProgressIndicator(
+                                      strokeWidth: 3,
+                                    ),
+                                    height: 18,
+                                    width: 18,
+                                  ),
+                                );
+                              } else {
+                                var value =
+                                    double.parse(snapshot.data!.lastValue!)
+                                        .toInt();
+                                return TempHumidBanner(
+                                  img: 'assets/icons/humidity.png',
+                                  title: 'Humidity',
+                                  horizontalPadding: Get.width * 0.044,
+                                  child: Text(
+                                    '$value%',
+                                    style: HomeFiTextTheme.kSub2HeadTextStyle
+                                        .copyWith(
+                                      color: Theme.of(context).primaryColorDark,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(height: size.height * 0.03),
                     Text(
@@ -191,16 +250,16 @@ class DashboardView extends GetView<HomeController> {
 
 class TempHumidBanner extends GetView<HomeController> {
   final HomeController controller = Get.put(HomeController());
-  final double horizontalPadding;
-  final String img;
-  final String title;
-  final String value;
+  final double? horizontalPadding;
+  final String? img;
+  final String? title;
+  final Widget? child;
 
   TempHumidBanner({
     required this.img,
     required this.title,
-    required this.value,
     required this.horizontalPadding,
+    required this.child,
   });
 
   @override
@@ -208,7 +267,8 @@ class TempHumidBanner extends GetView<HomeController> {
     return Container(
       height: Get.height * 0.08,
       width: Get.width * 0.38,
-      padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: 8),
+      padding:
+          EdgeInsets.symmetric(horizontal: horizontalPadding!, vertical: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         color: Theme.of(context).scaffoldBackgroundColor,
@@ -222,7 +282,7 @@ class TempHumidBanner extends GetView<HomeController> {
         children: [
           Image(
             image: AssetImage(
-              img,
+              img!,
             ),
             height: 40,
           ),
@@ -231,17 +291,10 @@ class TempHumidBanner extends GetView<HomeController> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Spacer(flex: 4),
-              Text(
-                value,
-                style: HomeFiTextTheme.kSub2HeadTextStyle.copyWith(
-                  color: Theme.of(context).primaryColorDark,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
+              child!,
               Spacer(flex: 2),
               Text(
-                title,
+                title!,
                 style: HomeFiTextTheme.kSub2HeadTextStyle.copyWith(
                   color: Theme.of(context).primaryColorDark,
                   fontSize: 12,

@@ -55,12 +55,12 @@ class SmartSystem extends StatelessWidget {
                 clipBehavior: Clip.none,
                 children: [
                   Positioned(
-                    top: 8,
-                    left: 5,
+                    top: 14,
+                    left: 14,
                     child: Image(
                       image: AssetImage(imageUrl),
                       fit: BoxFit.fill,
-                      width: 80,
+                      height: 70,
                     ),
                   ),
                   Positioned(
@@ -75,8 +75,8 @@ class SmartSystem extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    bottom: 30,
-                    left: 15,
+                    bottom: 28,
+                    left: 18,
                     child: Text(
                       title,
                       style: HomeFiTextTheme.kSub2HeadTextStyle.copyWith(

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:home_fi/app/data/models/temperature_model.dart';
@@ -43,11 +45,30 @@ class HomeController extends GetxController {
   late List temphumidata;
   var temp = 0.obs;
   var humidity = 0.obs;
+  late StreamController<Temperature> tempStream;
+  late StreamController<Humidity> humidStream;
+
+  Stream<Temperature>? get tempData async* {
+    yield await TempHumidAPI.getTempData();
+  }
+
+  // var temp2 = Stream<Temperature>.periodic(Duration(seconds: 6), (x){
+  //   yeald
+  // })
+
+  Stream<Humidity> get humidData async* {
+    yield await TempHumidAPI.getHumidData();
+  }
 
   // funtion to set current index
   setCurrentIndex(int index) {
     _currentIndex.value = index;
-    Get.forceAppUpdate();
+    if (index == 1 || index == 2) {
+      tempStream.close();
+      humidStream.close();
+    } else if (index == 0) {
+      streamInit();
+    }
   }
 
   // function to return correct view on bottom navBar switch
@@ -73,17 +94,25 @@ class HomeController extends GetxController {
     // temperature data fetch
     Temperature temper = await TempHumidAPI.getTempData();
     temp.value = double.parse(temper.lastValue!).toInt();
+    tempStream.add(temper);
 
     // humidity data fetch
     Humidity humid = await TempHumidAPI.getHumidData();
     humidity.value = double.parse(humid.lastValue!).toInt();
+    humidStream.add(humid);
 
     isReady.value = true;
   }
 
+  streamInit() {
+    tempStream = StreamController();
+    humidStream = StreamController();
+    Timer.periodic(Duration(seconds: 6), (_) => retreveSensorData());
+  }
+
   @override
   void onInit() {
-    retreveSensorData();
+    streamInit();
     super.onInit();
   }
 
@@ -93,5 +122,9 @@ class HomeController extends GetxController {
   }
 
   @override
-  void onClose() {}
+  void onClose() {
+    super.onClose();
+    tempStream.close();
+    humidStream.close();
+  }
 }
