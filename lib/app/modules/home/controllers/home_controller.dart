@@ -38,15 +38,8 @@ class HomeController extends GetxController {
 
   List<bool> isToggled = [false, false, false, false];
 
-  // Connected Bluetoth device
-  //late BluetoothDevice connectedDevice;
-
   // temperature from sensor;
-  String serviceUuid = "4fafc201-1fb5-459e-8fcc-c5c9c331914b";
-  String characteristicUuid = "beb5483e-36e1-4688-b7f5-ea07361b26a8";
   var isReady = false.obs;
-  // late Stream<List<int>> stream;
-  // late Stream<List<int>> streamR;
   late List temphumidata;
   var temp = 0.obs;
   var humidity = 0.obs;
@@ -75,22 +68,6 @@ class HomeController extends GetxController {
     update([2, true]);
   }
 
-  // funtions to get temp data
-  // discoverServices(BluetoothDevice device) async {
-  //   List<BluetoothService> services = await device.discoverServices();
-  //   services.forEach((service) {
-  //     if (service.uuid.toString() == serviceUuid) {
-  //       service.characteristics.forEach((characteristic) {
-  //         if (characteristic.uuid.toString() == characteristicUuid) {
-  //           characteristic.setNotifyValue(!characteristic.isNotifying);
-  //           stream = characteristic.value;
-  //           isReady.value = true;
-  //         }
-  //       });
-  //     }
-  //   });
-  // }
-
   // function to retreve sensor data
   retreveSensorData() async {
     // temperature data fetch
@@ -103,11 +80,6 @@ class HomeController extends GetxController {
 
     isReady.value = true;
   }
-
-  // function to convert sensor data
-  // String dataParser(List<int>? dataFromDevice) {
-  //   return utf8.decode(dataFromDevice!);
-  // }
 
   @override
   void onInit() {
