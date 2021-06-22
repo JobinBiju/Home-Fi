@@ -40,25 +40,9 @@ class HomeController extends GetxController {
 
   List<bool> isToggled = [false, false, false, false];
 
-  // temperature from sensor;
-  var isReady = false.obs;
-  late List temphumidata;
-  var temp = 0.obs;
-  var humidity = 0.obs;
+  // temperature & humidity from sensor;
   late StreamController<Temperature> tempStream;
   late StreamController<Humidity> humidStream;
-
-  Stream<Temperature>? get tempData async* {
-    yield await TempHumidAPI.getTempData();
-  }
-
-  // var temp2 = Stream<Temperature>.periodic(Duration(seconds: 6), (x){
-  //   yeald
-  // })
-
-  Stream<Humidity> get humidData async* {
-    yield await TempHumidAPI.getHumidData();
-  }
 
   // funtion to set current index
   setCurrentIndex(int index) {
@@ -93,15 +77,11 @@ class HomeController extends GetxController {
   retreveSensorData() async {
     // temperature data fetch
     Temperature temper = await TempHumidAPI.getTempData();
-    temp.value = double.parse(temper.lastValue!).toInt();
     tempStream.add(temper);
 
     // humidity data fetch
     Humidity humid = await TempHumidAPI.getHumidData();
-    humidity.value = double.parse(humid.lastValue!).toInt();
     humidStream.add(humid);
-
-    isReady.value = true;
   }
 
   streamInit() {

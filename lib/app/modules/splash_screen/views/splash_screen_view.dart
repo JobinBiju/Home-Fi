@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:home_fi/app/theme/color_theme.dart';
 import 'package:home_fi/app/theme/text_theme.dart';
 import 'package:lottie/lottie.dart';
 
@@ -17,25 +16,23 @@ class SplashScreenView extends GetView<SplashScreenController> {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                width: Get.width * 0.7,
-                child: Lottie.asset(
-                  'assets/lottie/light-bulb.json',
-                  controller: _.animationController,
-                  frameRate: FrameRate(60),
-                  repeat: true,
-                  onLoaded: (composition) {
-                    _.animationController..duration = composition.duration;
-                  },
-                ),
+              Lottie.asset(
+                'assets/lottie/light-bulb.json',
+                controller: _.animationController,
+                frameRate: FrameRate(60),
+                repeat: true,
+                width: Get.width * 0.75,
+                onLoaded: (composition) {
+                  _.animationController..duration = composition.duration;
+                },
               ),
               SizedBox(
                 height: 80.0,
               ),
               Text(
-                'Let There Be Light',
+                'Home-Fi',
                 style: HomeFiTextTheme.kHeadTextStyle.copyWith(
-                  color: GFTheme.primaryGrey,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
             ],

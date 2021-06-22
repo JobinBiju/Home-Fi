@@ -107,7 +107,7 @@ class DashboardView extends GetView<HomeController> {
                                 return TempHumidBanner(
                                   img: 'assets/icons/temperature.png',
                                   title: 'Temperature',
-                                  horizontalPadding: Get.width * 0.042,
+                                  horizontalPadding: Get.width * 0.046,
                                   child: SizedBox(
                                     child: CircularProgressIndicator(
                                       strokeWidth: 2,
@@ -117,13 +117,16 @@ class DashboardView extends GetView<HomeController> {
                                   ),
                                 );
                               } else {
-                                var value =
-                                    double.parse(snapshot.data!.lastValue!)
-                                        .toInt();
+                                var value;
+                                snapshot.data!.lastValue == 'nan'
+                                    ? value = 0
+                                    : value =
+                                        double.parse(snapshot.data!.lastValue!)
+                                            .toInt();
                                 return TempHumidBanner(
                                   img: 'assets/icons/temperature.png',
                                   title: 'Temperature',
-                                  horizontalPadding: Get.width * 0.042,
+                                  horizontalPadding: Get.width * 0.046,
                                   child: Text(
                                     '$value°C',
                                     style: HomeFiTextTheme.kSub2HeadTextStyle
@@ -156,9 +159,12 @@ class DashboardView extends GetView<HomeController> {
                                   ),
                                 );
                               } else {
-                                var value =
-                                    double.parse(snapshot.data!.lastValue!)
-                                        .toInt();
+                                var value;
+                                snapshot.data!.lastValue == 'nan'
+                                    ? value = 0
+                                    : value =
+                                        double.parse(snapshot.data!.lastValue!)
+                                            .toInt();
                                 return TempHumidBanner(
                                   img: 'assets/icons/humidity.png',
                                   title: 'Humidity',
