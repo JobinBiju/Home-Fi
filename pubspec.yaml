@@ -14,6 +14,7 @@ dependencies:
   cupertino_icons: ^1.0.3
   flutter_blue: ^0.8.0
   flutter_circle_color_picker: ^0.3.0
+  flutter_dotenv: ^5.0.0
   flutter_svg: ^0.22.0
   font_awesome_flutter: ^9.1.0
   get: ^4.1.4
@@ -34,3 +35,4 @@ flutter:
     - assets/icons/
     - assets/lottie/
     - assets/images/
+    - .env
