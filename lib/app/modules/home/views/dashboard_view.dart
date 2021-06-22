@@ -92,32 +92,35 @@ class DashboardView extends GetView<HomeController> {
                       },
                     ),
                     SizedBox(height: size.height * 0.03),
-                    !controller.isReady.value
-                        ? Center(
-                            child: CircularProgressIndicator(
-                              strokeWidth: 3,
+                    Obx(
+                      () => !controller.isReady.value
+                          ? Center(
+                              child: CircularProgressIndicator(
+                                strokeWidth: 3,
+                              ),
+                            )
+                          : Container(
+                              width: Get.width,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  TempHumidBanner(
+                                    img: 'assets/icons/temperature.png',
+                                    title: 'Temperature',
+                                    value: '${controller.temp.value}°C',
+                                    horizontalPadding: Get.width * 0.040,
+                                  ),
+                                  TempHumidBanner(
+                                    img: 'assets/icons/humidity.png',
+                                    title: 'Humidity',
+                                    value: '${controller.humidity.value}%',
+                                    horizontalPadding: Get.width * 0.042,
+                                  ),
+                                ],
+                              ),
                             ),
-                          )
-                        : Container(
-                            width: Get.width,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                TempHumidBanner(
-                                  img: 'assets/icons/temperature.png',
-                                  title: 'Temperature',
-                                  value: '${controller.temp.value}°C',
-                                  horizontalPadding: Get.width * 0.040,
-                                ),
-                                TempHumidBanner(
-                                  img: 'assets/icons/humidity.png',
-                                  title: 'Humidity',
-                                  value: '${controller.humidity.value}%',
-                                  horizontalPadding: Get.width * 0.042,
-                                ),
-                              ],
-                            ),
-                          ),
+                    ),
                     SizedBox(height: size.height * 0.03),
                     Text(
                       'Smart Systems',
