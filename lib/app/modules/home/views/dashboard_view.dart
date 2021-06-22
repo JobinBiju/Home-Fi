@@ -110,10 +110,10 @@ class DashboardView extends GetView<HomeController> {
                                   horizontalPadding: Get.width * 0.042,
                                   child: SizedBox(
                                     child: CircularProgressIndicator(
-                                      strokeWidth: 3,
+                                      strokeWidth: 2,
                                     ),
-                                    height: 18,
-                                    width: 18,
+                                    height: 15,
+                                    width: 15,
                                   ),
                                 );
                               } else {
@@ -149,10 +149,10 @@ class DashboardView extends GetView<HomeController> {
                                   horizontalPadding: Get.width * 0.044,
                                   child: SizedBox(
                                     child: CircularProgressIndicator(
-                                      strokeWidth: 3,
+                                      strokeWidth: 2,
                                     ),
-                                    height: 18,
-                                    width: 18,
+                                    height: 15,
+                                    width: 15,
                                   ),
                                 );
                               } else {
