@@ -1,9 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_blue/flutter_blue.dart';
 import 'package:get/get.dart';
+import 'package:home_fi/app/data/models/temperature_model.dart';
+import 'package:home_fi/app/data/models/humidity_model.dart';
 import 'package:home_fi/app/data/models/room_model.dart';
+import 'package:home_fi/app/data/provider/TempHumidAPI.dart';
 import 'package:home_fi/app/modules/home/views/dashboard_view.dart';
 import 'package:home_fi/app/modules/home/views/settings_view.dart';
 import 'package:home_fi/app/modules/home/views/users_view.dart';
@@ -39,14 +39,14 @@ class HomeController extends GetxController {
   List<bool> isToggled = [false, false, false, false];
 
   // Connected Bluetoth device
-  late BluetoothDevice connectedDevice;
+  //late BluetoothDevice connectedDevice;
 
   // temperature from sensor;
   String serviceUuid = "4fafc201-1fb5-459e-8fcc-c5c9c331914b";
   String characteristicUuid = "beb5483e-36e1-4688-b7f5-ea07361b26a8";
   var isReady = false.obs;
-  late Stream<List<int>> stream;
-  late Stream<List<int>> streamR;
+  // late Stream<List<int>> stream;
+  // late Stream<List<int>> streamR;
   late List temphumidata;
   var temp = 0.obs;
   var humidity = 0.obs;
@@ -76,41 +76,42 @@ class HomeController extends GetxController {
   }
 
   // funtions to get temp data
-  discoverServices(BluetoothDevice device) async {
-    List<BluetoothService> services = await device.discoverServices();
-    services.forEach((service) {
-      if (service.uuid.toString() == serviceUuid) {
-        service.characteristics.forEach((characteristic) {
-          if (characteristic.uuid.toString() == characteristicUuid) {
-            characteristic.setNotifyValue(!characteristic.isNotifying);
-            stream = characteristic.value;
-            isReady.value = true;
-          }
-        });
-      }
-    });
-  }
+  // discoverServices(BluetoothDevice device) async {
+  //   List<BluetoothService> services = await device.discoverServices();
+  //   services.forEach((service) {
+  //     if (service.uuid.toString() == serviceUuid) {
+  //       service.characteristics.forEach((characteristic) {
+  //         if (characteristic.uuid.toString() == characteristicUuid) {
+  //           characteristic.setNotifyValue(!characteristic.isNotifying);
+  //           stream = characteristic.value;
+  //           isReady.value = true;
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
 
   // function to retreve sensor data
-  retreveSensorData(List<int>? dataFromDevice) {
-    var currentValue = dataParser(dataFromDevice);
-    temphumidata = currentValue.split(",");
+  retreveSensorData() async {
+    // temperature data fetch
+    Temperature temper = await TempHumidAPI.getTempData();
+    temp.value = double.parse(temper.lastValue!).toInt();
 
-    if (temphumidata[0] != "nan") {
-      temp.value = double.parse('${temphumidata[0]}').toInt();
-    }
-    if (temphumidata[1] != "nan") {
-      humidity.value = double.parse('${temphumidata[1]}').toInt();
-    }
+    // humidity data fetch
+    Humidity humid = await TempHumidAPI.getHumidData();
+    humidity.value = double.parse(humid.lastValue!).toInt();
+
+    isReady.value = true;
   }
 
   // function to convert sensor data
-  String dataParser(List<int>? dataFromDevice) {
-    return utf8.decode(dataFromDevice!);
-  }
+  // String dataParser(List<int>? dataFromDevice) {
+  //   return utf8.decode(dataFromDevice!);
+  // }
 
   @override
   void onInit() {
+    retreveSensorData();
     super.onInit();
   }
 

@@ -19,6 +19,7 @@ dependencies:
   get: ^4.1.4
   get_storage: ^2.0.2
   google_fonts: ^2.1.0
+  http: ^0.13.3
   lottie: ^1.0.1
   sleek_circular_slider: ^2.0.0
 

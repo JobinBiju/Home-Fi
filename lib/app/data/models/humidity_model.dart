@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-class Temperature {
-  Temperature({
+class Humidity {
+  Humidity({
     this.username,
     this.owner,
     this.id,
@@ -51,12 +51,12 @@ class Temperature {
   List<dynamic>? feedWebhookReceivers;
   List<dynamic>? feedStatusChanges;
 
-  factory Temperature.fromRawJson(String str) =>
-      Temperature.fromJson(json.decode(str));
+  factory Humidity.fromRawJson(String str) =>
+      Humidity.fromJson(json.decode(str));
 
   String? toRawJson() => json.encode(toJson());
 
-  factory Temperature.fromJson(Map<String?, dynamic> json) => Temperature(
+  factory Humidity.fromJson(Map<String?, dynamic> json) => Humidity(
         username: json["username"],
         owner: Owner.fromJson(json["owner"]),
         id: json["id"],
