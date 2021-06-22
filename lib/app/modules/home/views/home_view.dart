@@ -8,12 +8,12 @@ import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   final HomeController controller = Get.put(HomeController());
-  final BluetoothDevice device;
+  //final BluetoothDevice device;
 
-  HomeView({required this.device}) {
-    controller.connectedDevice = device;
-    controller.discoverServices(device);
-  }
+  // HomeView({required this.device}) {
+  //   controller.connectedDevice = device;
+  //   controller.discoverServices(device);
+  // }
 
   @override
   Widget build(BuildContext context) {

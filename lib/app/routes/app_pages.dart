@@ -21,10 +21,10 @@ class AppPages {
       page: () => SplashScreenView(),
       binding: SplashScreenBinding(),
     ),
-    GetPage(
-      name: _Paths.DEVICE_SELECTION,
-      page: () => DeviceSelectionView(),
-      binding: DeviceSelectionBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.DEVICE_SELECTION,
+    //   page: () => DeviceSelectionView(),
+    //   binding: DeviceSelectionBinding(),
+    // ),
   ];
 }
