@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:home_fi/app/data/models/humidity_model.dart';
-import 'package:home_fi/app/data/models/temperature_model.dart';
+import 'package:home_fi/app/data/models/adafruit_get.dart';
 import 'package:home_fi/app/global_widgets/room_selector.dart';
 import 'package:home_fi/app/global_widgets/smart_systems.dart';
 import 'package:home_fi/app/global_widgets/user_avathar.dart';
@@ -98,7 +97,7 @@ class DashboardView extends GetView<HomeController> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          StreamBuilder<Temperature>(
+                          StreamBuilder<AdafruitGET>(
                             stream: controller.tempStream.stream,
                             builder: (context, snapshot) {
                               if (!snapshot.hasData ||
@@ -140,7 +139,7 @@ class DashboardView extends GetView<HomeController> {
                               }
                             },
                           ),
-                          StreamBuilder<Humidity>(
+                          StreamBuilder<AdafruitGET>(
                             stream: controller.humidStream.stream,
                             builder: (context, snapshot) {
                               if (!snapshot.hasData ||

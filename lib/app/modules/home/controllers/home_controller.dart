@@ -2,8 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:home_fi/app/data/models/temperature_model.dart';
-import 'package:home_fi/app/data/models/humidity_model.dart';
+import 'package:home_fi/app/data/models/adafruit_get.dart';
 import 'package:home_fi/app/data/models/room_model.dart';
 import 'package:home_fi/app/data/provider/TempHumidAPI.dart';
 import 'package:home_fi/app/modules/home/views/dashboard_view.dart';
@@ -40,9 +39,9 @@ class HomeController extends GetxController {
 
   List<bool> isToggled = [false, false, false, false];
 
-  // temperature & humidity from sensor;
-  late StreamController<Temperature> tempStream;
-  late StreamController<Humidity> humidStream;
+  // AdafruitGET & AdafruitGET from sensor;
+  late StreamController<AdafruitGET> tempStream;
+  late StreamController<AdafruitGET> humidStream;
 
   // funtion to set current index
   setCurrentIndex(int index) {
@@ -75,12 +74,12 @@ class HomeController extends GetxController {
 
   // function to retreve sensor data
   retreveSensorData() async {
-    // temperature data fetch
-    Temperature temper = await TempHumidAPI.getTempData();
+    // AdafruitGET data fetch
+    AdafruitGET temper = await TempHumidAPI.getTempData();
     tempStream.add(temper);
 
-    // humidity data fetch
-    Humidity humid = await TempHumidAPI.getHumidData();
+    // AdafruitGET data fetch
+    AdafruitGET humid = await TempHumidAPI.getHumidData();
     humidStream.add(humid);
   }
 

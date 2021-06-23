@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-class Humidity {
-  Humidity({
+class AdafruitGET {
+  AdafruitGET({
     this.username,
     this.owner,
     this.id,
@@ -51,12 +51,12 @@ class Humidity {
   List<dynamic>? feedWebhookReceivers;
   List<dynamic>? feedStatusChanges;
 
-  factory Humidity.fromRawJson(String str) =>
-      Humidity.fromJson(json.decode(str));
+  factory AdafruitGET.fromRawJson(String str) =>
+      AdafruitGET.fromJson(json.decode(str));
 
   String? toRawJson() => json.encode(toJson());
 
-  factory Humidity.fromJson(Map<String?, dynamic> json) => Humidity(
+  factory AdafruitGET.fromJson(Map<String?, dynamic> json) => AdafruitGET(
         username: json["username"],
         owner: Owner.fromJson(json["owner"]),
         id: json["id"],
