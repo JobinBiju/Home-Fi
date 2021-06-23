@@ -56,7 +56,7 @@ class SmartSystem extends StatelessWidget {
                 children: [
                   Positioned(
                     top: 14,
-                    left: 14,
+                    left: Get.width * 0.025,
                     child: Image(
                       image: AssetImage(imageUrl),
                       fit: BoxFit.fill,

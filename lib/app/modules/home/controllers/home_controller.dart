@@ -11,7 +11,7 @@ import 'package:home_fi/app/modules/home/views/users_view.dart';
 
 class HomeController extends GetxController {
   // bottom nav current index.
-  var _currentIndex = 0.obs;
+  RxInt _currentIndex = 0.obs;
   get currentIndex => this._currentIndex.value;
 
   // userData
@@ -42,6 +42,7 @@ class HomeController extends GetxController {
   // AdafruitGET & AdafruitGET from sensor;
   late StreamController<AdafruitGET> tempStream;
   late StreamController<AdafruitGET> humidStream;
+  late StreamController<AdafruitGET> led1Stream;
 
   // funtion to set current index
   setCurrentIndex(int index) {
@@ -49,6 +50,7 @@ class HomeController extends GetxController {
     if (index == 1 || index == 2) {
       tempStream.close();
       humidStream.close();
+      led1Stream.close();
     } else if (index == 0) {
       streamInit();
     }
@@ -69,6 +71,10 @@ class HomeController extends GetxController {
   // switches in the room
   onSwitched(int index) {
     isToggled[index] = !isToggled[index];
+    if (index == 0) {
+      var value = isToggled[index] ? "1" : "0";
+      TempHumidAPI.updateLed1Data(value);
+    }
     update([2, true]);
   }
 
@@ -83,10 +89,25 @@ class HomeController extends GetxController {
     humidStream.add(humid);
   }
 
+  getSmartSystemStatus() async {
+    var data = await TempHumidAPI.getLed1Data();
+    var value = int.parse(data.lastValue!);
+    if (value == 1) {
+      isToggled[0] = true;
+    } else if (value == 0) {
+      isToggled[0] = false;
+    }
+    update([2, true]);
+  }
+
   streamInit() {
     tempStream = StreamController();
     humidStream = StreamController();
-    Timer.periodic(Duration(seconds: 6), (_) => retreveSensorData());
+    humidStream = StreamController();
+    Timer.periodic(Duration(seconds: 6), (_) {
+      retreveSensorData();
+      getSmartSystemStatus();
+    });
   }
 
   @override
@@ -105,5 +126,6 @@ class HomeController extends GetxController {
     super.onClose();
     tempStream.close();
     humidStream.close();
+    led1Stream.close();
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:home_fi/app/data/models/adafruit_get.dart';
 import 'package:http/http.dart' as http;
@@ -46,14 +48,19 @@ class TempHumidAPI {
     }
   }
 
-  static Future<AdafruitGET> updateLed1Data(int value) async {
-    http.Response response = await http.put(
-      Uri.parse(mainURL + '$username/feeds/$led1Feed'),
-      headers: <String, String>{'X-AIO-Key': aioKey!},
-      body: {}
+  static Future<bool> updateLed1Data(String value) async {
+    http.Response response = await http.post(
+      Uri.parse(mainURL + '$username/feeds/$led1Feed/data'),
+      headers: <String, String>{
+        'X-AIO-Key': aioKey!,
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode({
+        "datum": {"value": value}
+      }),
     );
     if (response.statusCode == 200) {
-      return AdafruitGET.fromRawJson(response.body);
+      return true;
     } else {
       throw Error();
     }
