@@ -104,9 +104,9 @@ class HomeController extends GetxController {
     tempStream = StreamController();
     humidStream = StreamController();
     humidStream = StreamController();
-    Timer.periodic(Duration(seconds: 6), (_) {
-      retreveSensorData();
+    Timer.periodic(Duration(seconds: 3), (_) {
       getSmartSystemStatus();
+      retreveSensorData();
     });
   }
 
