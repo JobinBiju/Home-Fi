@@ -49,7 +49,6 @@ class HomeController extends GetxController {
     if (index == 1 || index == 2) {
       tempStream.close();
       humidStream.close();
-      led1Stream.close();
     } else if (index == 0) {
       streamInit();
     }
@@ -102,10 +101,13 @@ class HomeController extends GetxController {
   streamInit() {
     tempStream = StreamController();
     humidStream = StreamController();
-    Timer.periodic(Duration(seconds: 3), (_) {
-      getSmartSystemStatus();
-      retreveSensorData();
-    });
+    Timer.periodic(
+      Duration(seconds: 3),
+      (_) {
+        getSmartSystemStatus();
+        retreveSensorData();
+      },
+    );
   }
 
   @override
