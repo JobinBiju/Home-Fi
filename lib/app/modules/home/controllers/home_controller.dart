@@ -42,7 +42,6 @@ class HomeController extends GetxController {
   // AdafruitGET & AdafruitGET from sensor;
   late StreamController<AdafruitGET> tempStream;
   late StreamController<AdafruitGET> humidStream;
-  late StreamController<AdafruitGET> led1Stream;
 
   // funtion to set current index
   setCurrentIndex(int index) {
@@ -103,7 +102,6 @@ class HomeController extends GetxController {
   streamInit() {
     tempStream = StreamController();
     humidStream = StreamController();
-    humidStream = StreamController();
     Timer.periodic(Duration(seconds: 3), (_) {
       getSmartSystemStatus();
       retreveSensorData();
@@ -126,6 +124,5 @@ class HomeController extends GetxController {
     super.onClose();
     tempStream.close();
     humidStream.close();
-    led1Stream.close();
   }
 }
