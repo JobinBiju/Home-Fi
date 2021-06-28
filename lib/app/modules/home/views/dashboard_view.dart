@@ -70,23 +70,26 @@ class DashboardView extends GetView<HomeController> {
                         return Container(
                           width: size.width,
                           height: size.height * 0.12,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: controller.rooms.length,
-                            itemBuilder: (context, index) {
-                              return GestureDetector(
-                                child: RoomSelector(
-                                  roomName: controller.rooms[index].roomName,
-                                  roomImageURL:
-                                      controller.rooms[index].roomImgUrl,
-                                  isSelected: controller.selectedRoom[index],
-                                  onTap: () {},
-                                ),
-                                onTap: () {
-                                  controller.roomChange(index);
-                                },
-                              );
-                            },
+                          child: Theme(
+                            data: Theme.of(context),
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: controller.rooms.length,
+                              itemBuilder: (context, index) {
+                                return GestureDetector(
+                                  child: RoomSelector(
+                                    roomName: controller.rooms[index].roomName,
+                                    roomImageURL:
+                                        controller.rooms[index].roomImgUrl,
+                                    isSelected: controller.selectedRoom[index],
+                                    onTap: () {},
+                                  ),
+                                  onTap: () {
+                                    controller.roomChange(index);
+                                  },
+                                );
+                              },
+                            ),
                           ),
                         );
                       },
@@ -200,19 +203,19 @@ class DashboardView extends GetView<HomeController> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 SmartSystem(
-                                  size: size,
                                   color: GFTheme.lightPurple,
                                   index: 0,
                                   title: 'LED Light',
                                   imageUrl: 'assets/images/icons8-light-96.png',
+                                  onTap: () {},
                                 ),
                                 SmartSystem(
-                                  size: size,
                                   color: GFTheme.lightBlue,
                                   index: 1,
                                   title: 'RGB LED',
                                   imageUrl:
                                       'assets/images/icons8-rgb-lamp-96.png',
+                                  onTap: () {},
                                 ),
                               ],
                             ),
@@ -221,19 +224,19 @@ class DashboardView extends GetView<HomeController> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 SmartSystem(
-                                  size: size,
                                   color: GFTheme.lightYellow,
                                   index: 2,
                                   title: 'Music Player',
                                   imageUrl:
                                       'assets/images/icons8-music-record-96.png',
+                                  onTap: () {},
                                 ),
                                 SmartSystem(
-                                  size: size,
                                   color: GFTheme.lightPeach,
                                   index: 3,
                                   title: 'LED Light 2',
                                   imageUrl: 'assets/images/icons8-light-96.png',
+                                  onTap: () {},
                                 ),
                               ],
                             ),
