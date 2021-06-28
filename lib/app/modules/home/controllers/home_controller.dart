@@ -89,11 +89,17 @@ class HomeController extends GetxController {
 
   getSmartSystemStatus() async {
     var data = await TempHumidAPI.getLed1Data();
+    var rgbData = await TempHumidAPI.getRGBstatus();
     var value = int.parse(data.lastValue!);
     if (value == 1) {
       isToggled[0] = true;
     } else if (value == 0) {
       isToggled[0] = false;
+    }
+    if (rgbData.lastValue?.compareTo("#000000") == 0) {
+      isToggled[1] = false;
+    } else {
+      isToggled[1] = true;
     }
     update([2, true]);
   }

@@ -10,6 +10,7 @@ class TempHumidAPI {
   static String tempFeed = 'temperature';
   static String humidFeed = 'humidity';
   static String led1Feed = 'led-1';
+  static String rgbFeed = 'color';
   static String mainURL = 'https://io.adafruit.com/api/v2/';
 
   static Future<AdafruitGET> getTempData() async {
@@ -61,6 +62,18 @@ class TempHumidAPI {
     );
     if (response.statusCode == 200) {
       return true;
+    } else {
+      throw Error();
+    }
+  }
+
+  static Future<AdafruitGET> getRGBstatus() async {
+    http.Response response = await http.get(
+      Uri.parse(mainURL + '$username/feeds/$rgbFeed'),
+      headers: <String, String>{'X-AIO-Key': aioKey!},
+    );
+    if (response.statusCode == 200) {
+      return AdafruitGET.fromRawJson(response.body);
     } else {
       throw Error();
     }
