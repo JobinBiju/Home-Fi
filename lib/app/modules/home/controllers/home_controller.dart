@@ -43,6 +43,10 @@ class HomeController extends GetxController {
   late StreamController<AdafruitGET> tempStream;
   late StreamController<AdafruitGET> humidStream;
 
+  // store current color from adafruit IO
+  RxString currentRGB = "0xffffff".obs;
+  RxString newRGB = "".obs;
+
   // funtion to set current index
   setCurrentIndex(int index) {
     _currentIndex.value = index;
@@ -73,16 +77,20 @@ class HomeController extends GetxController {
       var value = isToggled[index] ? "1" : "0";
       TempHumidAPI.updateLed1Data(value);
     }
+    if (index == 1) {
+      var value = isToggled[index] ? "#ffffff" : "#000000";
+      TempHumidAPI.updateRGBdata(value);
+    }
     update([2, true]);
   }
 
   // function to retreve sensor data
   retreveSensorData() async {
-    // AdafruitGET data fetch
+    // AdafruitGET temperature data fetch
     AdafruitGET temper = await TempHumidAPI.getTempData();
     tempStream.add(temper);
 
-    // AdafruitGET data fetch
+    // AdafruitGET humidity data fetch
     AdafruitGET humid = await TempHumidAPI.getHumidData();
     humidStream.add(humid);
   }
@@ -90,6 +98,7 @@ class HomeController extends GetxController {
   getSmartSystemStatus() async {
     var data = await TempHumidAPI.getLed1Data();
     var rgbData = await TempHumidAPI.getRGBstatus();
+    currentRGB.value = rgbData.lastValue!;
     var value = int.parse(data.lastValue!);
     if (value == 1) {
       isToggled[0] = true;
@@ -102,6 +111,10 @@ class HomeController extends GetxController {
       isToggled[1] = true;
     }
     update([2, true]);
+  }
+
+  sendRGBColor(String hex) {
+    TempHumidAPI.updateRGBdata(hex);
   }
 
   streamInit() {
@@ -119,6 +132,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     streamInit();
+    newRGB = currentRGB;
     super.onInit();
   }
 

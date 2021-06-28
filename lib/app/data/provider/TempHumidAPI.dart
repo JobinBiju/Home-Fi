@@ -78,4 +78,22 @@ class TempHumidAPI {
       throw Error();
     }
   }
+
+  static Future<bool> updateRGBdata(String value) async {
+    http.Response response = await http.post(
+      Uri.parse(mainURL + '$username/feeds/$rgbFeed/data'),
+      headers: <String, String>{
+        'X-AIO-Key': aioKey!,
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode({
+        "datum": {"value": value}
+      }),
+    );
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      throw Error();
+    }
+  }
 }

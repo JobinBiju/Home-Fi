@@ -6,6 +6,7 @@ import 'package:home_fi/app/global_widgets/room_selector.dart';
 import 'package:home_fi/app/global_widgets/smart_systems.dart';
 import 'package:home_fi/app/global_widgets/user_avathar.dart';
 import 'package:home_fi/app/modules/home/controllers/home_controller.dart';
+import 'package:home_fi/app/modules/home/views/rgb_view.dart';
 import 'package:home_fi/app/theme/color_theme.dart';
 import 'package:home_fi/app/theme/text_theme.dart';
 
@@ -215,7 +216,9 @@ class DashboardView extends GetView<HomeController> {
                                   title: 'RGB LED',
                                   imageUrl:
                                       'assets/images/icons8-rgb-lamp-96.png',
-                                  onTap: () {},
+                                  onTap: () {
+                                    Get.to(() => RGBview());
+                                  },
                                 ),
                               ],
                             ),
