@@ -75,7 +75,7 @@ class SmartSystem extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    bottom: 28,
+                    bottom: 25,
                     left: 18,
                     child: Text(
                       title,
