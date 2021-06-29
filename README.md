@@ -23,5 +23,5 @@ samples, guidance on mobile development, and a full API reference.
 
 ## UI Till Now
 
-| <img align="left" alt="Splash Screen" src="assets/readmeFiles/1_Splash.gif" width="250px" /> | <img align="left" alt="Welcome Screen" src="assets/readmeFiles/2_Dash.jpg" width="250px" /> | <img align="left" alt="Welcome Screen" src="assets/readmeFiles/3_RGB.jpg" width="250px" /> |
+| <img align="left" alt="Splash Screen" src="assets/readmeFiles/1_Splash.gif" width="240px" /> | <img align="left" alt="Welcome Screen" src="assets/readmeFiles/2_Dash.jpg" width="240px" /> | <img align="left" alt="Welcome Screen" src="assets/readmeFiles/3_RGB.jpg" width="240px" /> |
 | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
