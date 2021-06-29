@@ -2,7 +2,9 @@
 <img src="assets/readmeFiles/Home-Fi.png" width=700>
 </p>
 
-A Home Automation App using Flutter & ESP32 Dev Board.
+### A Home Automation app made using Flutter, Adafruit IO & ESP32 Dev Board.
+
+<br>
 
 ## Getting Started
 
