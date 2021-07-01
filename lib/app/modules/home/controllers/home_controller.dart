@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import 'package:home_fi/app/data/models/adafruit_get.dart';
 import 'package:home_fi/app/data/models/room_model.dart';
 import 'package:home_fi/app/data/provider/TempHumidAPI.dart';
+import 'package:home_fi/app/modules/connected_device/views/connected_device_view.dart';
 import 'package:home_fi/app/modules/home/views/dashboard_view.dart';
 import 'package:home_fi/app/modules/home/views/settings_view.dart';
-import 'package:home_fi/app/modules/home/views/users_view.dart';
 
 class HomeController extends GetxController {
   // bottom nav current index.
@@ -24,7 +24,7 @@ class HomeController extends GetxController {
   // the list of screens switched by bottom navBar
   final List<Widget> homeViews = [
     DashboardView(),
-    UsersView(),
+    ConnectedDeviceView(),
     SettingsView(),
   ];
 

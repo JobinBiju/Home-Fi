@@ -6,6 +6,7 @@ abstract class Routes {
   static const SPLASH_SCREEN = _Paths.SPLASH_SCREEN;
   static const ROOM_TEMP = _Paths.ROOM_TEMP;
   static const DEVICE_SELECTION = _Paths.DEVICE_SELECTION;
+  static const CONNECTED_DEVICE = _Paths.CONNECTED_DEVICE;
 }
 
 abstract class _Paths {
@@ -13,4 +14,5 @@ abstract class _Paths {
   static const SPLASH_SCREEN = '/splash-screen';
   static const ROOM_TEMP = '/room-temp';
   static const DEVICE_SELECTION = '/device-selection';
+  static const CONNECTED_DEVICE = '/connected-device';
 }
