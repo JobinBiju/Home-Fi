@@ -12,7 +12,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.3
-  flutter_blue: ^0.8.0
   flutter_circle_color_picker: ^0.3.0
   flutter_dotenv: ^5.0.0
   flutter_svg: ^0.22.0
@@ -23,7 +22,6 @@ dependencies:
   http: ^0.13.3
   lottie: ^1.0.1
   mqtt_client: ^9.3.1
-  sleek_circular_slider: ^2.0.0
 
 dev_dependencies:
   flutter_test:
