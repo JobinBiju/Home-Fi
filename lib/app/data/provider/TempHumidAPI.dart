@@ -5,7 +5,7 @@ import 'package:home_fi/app/data/models/adafruit_get.dart';
 import 'package:http/http.dart' as http;
 
 class TempHumidAPI {
-  static String username = 'blairripper';
+  static String username = 'gekobeb651';
   static String? aioKey = dotenv.env['API_Key'].toString();
   static String tempFeed = 'temperature';
   static String humidFeed = 'humidity';
@@ -15,7 +15,7 @@ class TempHumidAPI {
 
   static Future<AdafruitGET> getTempData() async {
     http.Response response = await http.get(
-      Uri.parse(mainURL + '$username/feeds/$tempFeed'),
+      Uri.parse('$mainURL$username/feeds/$tempFeed'),
       headers: <String, String>{'X-AIO-Key': aioKey!},
     );
     if (response.statusCode == 200) {
@@ -27,7 +27,7 @@ class TempHumidAPI {
 
   static Future<AdafruitGET> getHumidData() async {
     http.Response response = await http.get(
-      Uri.parse(mainURL + '$username/feeds/$humidFeed'),
+      Uri.parse('$mainURL$username/feeds/$humidFeed'),
       headers: <String, String>{'X-AIO-Key': aioKey!},
     );
     if (response.statusCode == 200) {
@@ -39,7 +39,7 @@ class TempHumidAPI {
 
   static Future<AdafruitGET> getLed1Data() async {
     http.Response response = await http.get(
-      Uri.parse(mainURL + '$username/feeds/$led1Feed'),
+      Uri.parse('$mainURL$username/feeds/$led1Feed'),
       headers: <String, String>{'X-AIO-Key': aioKey!},
     );
     if (response.statusCode == 200) {
@@ -51,7 +51,7 @@ class TempHumidAPI {
 
   static Future<bool> updateLed1Data(String value) async {
     http.Response response = await http.post(
-      Uri.parse(mainURL + '$username/feeds/$led1Feed/data'),
+      Uri.parse('$mainURL$username/feeds/$led1Feed/data'),
       headers: <String, String>{
         'X-AIO-Key': aioKey!,
         'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ class TempHumidAPI {
 
   static Future<AdafruitGET> getRGBstatus() async {
     http.Response response = await http.get(
-      Uri.parse(mainURL + '$username/feeds/$rgbFeed'),
+      Uri.parse('$mainURL$username/feeds/$rgbFeed'),
       headers: <String, String>{'X-AIO-Key': aioKey!},
     );
     if (response.statusCode == 200) {
@@ -81,7 +81,7 @@ class TempHumidAPI {
 
   static Future<bool> updateRGBdata(String value) async {
     http.Response response = await http.post(
-      Uri.parse(mainURL + '$username/feeds/$rgbFeed/data'),
+      Uri.parse('$mainURL$username/feeds/$rgbFeed/data'),
       headers: <String, String>{
         'X-AIO-Key': aioKey!,
         'Content-Type': 'application/json',

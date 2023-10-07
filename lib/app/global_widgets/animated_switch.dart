@@ -49,19 +49,19 @@ class AnimatedSwitch extends StatelessWidget {
               crossFadeState: isToggled[index]
                   ? CrossFadeState.showSecond
                   : CrossFadeState.showFirst,
-              duration: Duration(
+              duration: const Duration(
                 milliseconds: 200,
               ),
             ),
             AnimatedAlign(
-              duration: Duration(
+              duration: const Duration(
                 milliseconds: 300,
               ),
               alignment: isToggled[index]
                   ? Alignment.centerRight
                   : Alignment.centerLeft,
               child: Container(
-                margin: EdgeInsets.symmetric(
+                margin: const EdgeInsets.symmetric(
                   horizontal: 4,
                 ),
                 height: 42 * 0.5,

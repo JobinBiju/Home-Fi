@@ -15,8 +15,8 @@ class UserAvatar extends StatelessWidget {
     return CircleAvatar(
       radius: radius,
       backgroundImage: ismale
-          ? AssetImage('assets/images/male-user-1.png')
-          : AssetImage('assets/images/female-user-1.png'),
+          ? const AssetImage('assets/images/male-user-1.png')
+          : const AssetImage('assets/images/female-user-1.png'),
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
     );
   }

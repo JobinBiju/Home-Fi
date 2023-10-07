@@ -6,7 +6,14 @@
 
 <br>
 
-<a href="https://www.buymeacoffee.com/jobinbiju234" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50px" alt="Buy Me A Coffee"></a>
+## Setup Adafruit (Feeds)
+
+```
+color:	#000000
+humidity:
+led-1:0
+temperature:0
+```
 
 ## Getting Started
 

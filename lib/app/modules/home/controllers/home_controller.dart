@@ -11,11 +11,11 @@ import 'package:home_fi/app/modules/home/views/settings_view.dart';
 
 class HomeController extends GetxController {
   // bottom nav current index.
-  RxInt _currentIndex = 0.obs;
-  get currentIndex => this._currentIndex.value;
+  final RxInt _currentIndex = 0.obs;
+  get currentIndex => _currentIndex.value;
 
   // userData
-  String userName = 'Jobin';
+  String userName = 'Bhargav';
   bool isMale = true;
 
   // List of bools for selected room
@@ -23,9 +23,9 @@ class HomeController extends GetxController {
 
   // the list of screens switched by bottom navBar
   final List<Widget> homeViews = [
-    DashboardView(),
+    const DashboardView(),
     ConnectedDeviceView(),
-    SettingsView(),
+    const SettingsView(),
   ];
 
   // List of room data
@@ -99,7 +99,7 @@ class HomeController extends GetxController {
     var data = await TempHumidAPI.getLed1Data();
     var rgbData = await TempHumidAPI.getRGBstatus();
     currentRGB.value = rgbData.lastValue!;
-    var value = int.parse(data.lastValue!);
+    var value = int.parse(data.lastValue ?? "0");
     if (value == 1) {
       isToggled[0] = true;
     } else if (value == 0) {
@@ -121,7 +121,7 @@ class HomeController extends GetxController {
     tempStream = StreamController();
     humidStream = StreamController();
     Timer.periodic(
-      Duration(seconds: 3),
+      const Duration(seconds: 3),
       (_) {
         getSmartSystemStatus();
         retreveSensorData();
