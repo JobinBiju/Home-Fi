@@ -11,6 +11,8 @@ import 'package:home_fi/app/theme/color_theme.dart';
 import 'package:home_fi/app/theme/text_theme.dart';
 
 class DashboardView extends GetView<HomeController> {
+  const DashboardView({super.key});
+
   @override
   Widget build(BuildContext context) {
     Size size = Get.size;
@@ -50,7 +52,7 @@ class DashboardView extends GetView<HomeController> {
           ),
           SizedBox(height: size.height * 0.03),
           Expanded(
-            child: Container(
+            child: SizedBox(
               width: size.width * 0.9,
               child: SingleChildScrollView(
                 child: Column(
@@ -68,7 +70,7 @@ class DashboardView extends GetView<HomeController> {
                       init: HomeController(),
                       id: 1,
                       builder: (_) {
-                        return Container(
+                        return SizedBox(
                           width: size.width,
                           height: size.height * 0.12,
                           child: Theme(
@@ -96,7 +98,7 @@ class DashboardView extends GetView<HomeController> {
                       },
                     ),
                     SizedBox(height: size.height * 0.03),
-                    Container(
+                    SizedBox(
                       width: Get.width,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -111,21 +113,32 @@ class DashboardView extends GetView<HomeController> {
                                   img: 'assets/icons/temperature.png',
                                   title: 'Temperature',
                                   horizontalPadding: Get.width * 0.046,
-                                  child: SizedBox(
+                                  child: const SizedBox(
+                                    height: 15,
+                                    width: 15,
                                     child: CircularProgressIndicator(
                                       strokeWidth: 2,
                                     ),
-                                    height: 15,
-                                    width: 15,
                                   ),
                                 );
                               } else {
-                                var value;
-                                snapshot.data!.lastValue == 'nan'
-                                    ? value = 0
-                                    : value =
+                                // int value;
+                                // snapshot.data!.lastValue == 'nan'
+                                //     ? value = 0
+                                //     : value =
+                                //         double.parse(snapshot.data!.lastValue!)
+                                //             .toInt();
+                                int value = 0;
+                                if (snapshot.data != null &&
+                                    snapshot.data!.lastValue != null) {
+                                  if (snapshot.data!.lastValue == 'nan') {
+                                    value = 0;
+                                  } else {
+                                    value =
                                         double.parse(snapshot.data!.lastValue!)
                                             .toInt();
+                                  }
+                                }
                                 return TempHumidBanner(
                                   img: 'assets/icons/temperature.png',
                                   title: 'Temperature',
@@ -153,21 +166,32 @@ class DashboardView extends GetView<HomeController> {
                                   img: 'assets/icons/humidity.png',
                                   title: 'Humidity',
                                   horizontalPadding: Get.width * 0.044,
-                                  child: SizedBox(
+                                  child: const SizedBox(
+                                    height: 15,
+                                    width: 15,
                                     child: CircularProgressIndicator(
                                       strokeWidth: 2,
                                     ),
-                                    height: 15,
-                                    width: 15,
                                   ),
                                 );
                               } else {
-                                var value;
-                                snapshot.data!.lastValue == 'nan'
-                                    ? value = 0
-                                    : value =
+                                // int value;
+                                // snapshot.data!.lastValue == 'nan'
+                                //     ? value = 0
+                                //     : value =
+                                //         double.parse(snapshot.data!.lastValue!)
+                                //             .toInt();
+                                int value = 0;
+                                if (snapshot.data != null &&
+                                    snapshot.data!.lastValue != null) {
+                                  if (snapshot.data!.lastValue == 'nan') {
+                                    value = 0;
+                                  } else {
+                                    value =
                                         double.parse(snapshot.data!.lastValue!)
                                             .toInt();
+                                  }
+                                }
                                 return TempHumidBanner(
                                   img: 'assets/icons/humidity.png',
                                   title: 'Humidity',
@@ -260,6 +284,7 @@ class DashboardView extends GetView<HomeController> {
 }
 
 class TempHumidBanner extends GetView<HomeController> {
+  @override
   final HomeController controller = Get.put(HomeController());
   final double? horizontalPadding;
   final String? img;
@@ -267,6 +292,7 @@ class TempHumidBanner extends GetView<HomeController> {
   final Widget? child;
 
   TempHumidBanner({
+    super.key,
     required this.img,
     required this.title,
     required this.horizontalPadding,
@@ -301,9 +327,9 @@ class TempHumidBanner extends GetView<HomeController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Spacer(flex: 4),
+              const Spacer(flex: 4),
               child!,
-              Spacer(flex: 2),
+              const Spacer(flex: 2),
               Text(
                 title!,
                 style: HomeFiTextTheme.kSub2HeadTextStyle.copyWith(
@@ -311,7 +337,7 @@ class TempHumidBanner extends GetView<HomeController> {
                   fontSize: 12,
                 ),
               ),
-              Spacer(flex: 4),
+              const Spacer(flex: 4),
             ],
           ),
         ],

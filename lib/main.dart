@@ -13,14 +13,16 @@ void main() async {
   SystemChrome.setPreferredOrientations(
     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
   );
-  runApp(MyApp());
+  runApp(const MainApp());
 }
 
-class MyApp extends StatelessWidget {
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      theme: appThemeData[AppTheme.MaroonLight],
+      theme: appThemeData[AppTheme.maroonLight],
       title: "Home Automation",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,

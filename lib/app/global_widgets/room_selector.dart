@@ -19,7 +19,7 @@ class RoomSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: Get.height * 0.11,
       height: Get.height * 0.2,
       child: Column(
@@ -27,7 +27,7 @@ class RoomSelector extends StatelessWidget {
           Container(
             height: Get.height * 0.083,
             width: Get.height * 0.083,
-            padding: EdgeInsets.all(14),
+            padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
               color: isSelected
                   ? Theme.of(context).primaryColor

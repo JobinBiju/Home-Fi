@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:home_fi/app/modules/home/views/home_view.dart';
 
 class SplashScreenController extends GetxController
-    with SingleGetTickerProviderMixin {
+    with GetSingleTickerProviderStateMixin {
   // animation controller for lottie
   late AnimationController animationController;
 
@@ -14,7 +14,7 @@ class SplashScreenController extends GetxController
     super.onInit();
     // spalsh animation config
     animationController = AnimationController(
-      duration: Duration(seconds: 4),
+      duration: const Duration(seconds: 4),
       vsync: this,
     );
     animationController.forward();
@@ -22,7 +22,7 @@ class SplashScreenController extends GetxController
       if (status == AnimationStatus.completed) {
         // checkLogin();
         Timer(
-          Duration(milliseconds: 1000),
+          const Duration(milliseconds: 1000),
           () => Get.off(() => HomeView()),
         );
       }
