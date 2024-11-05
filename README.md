@@ -100,9 +100,6 @@ Mobile App (Flutter) <-> Adafruit IO Cloud <-> ESP32 Device <-> Home Appliances
 - Power Supply
 - Connecting Wires
 
-### Circuit Diagram
-[Add your circuit diagram here]
-
 ## 📡 Communication Protocol
 
 The system uses MQTT protocol for communication:
